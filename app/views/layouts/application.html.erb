@@ -11,6 +11,24 @@
   </head>
 
   <body>
+    <p class="notice"><%= notice %></P>
+    <P class="alert"><%= alert %></p>
+
+    <header>
+      <% if (!user_signed_in?) %>
+        <div class="header-list">
+          <%= link_to "ログイン", new_user_session_path %>
+          <%= link_to "新規登録", new_user_registration_path, class: "button-orange" %>
+        </div>
+      <% else %>
+        <div class="header-list">
+          <%= current_user.name %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "" %>
+        </div>
+      <% end %>
+    </header>
+
+
     <%= yield %>
   </body>
 </html>
