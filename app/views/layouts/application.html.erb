@@ -24,6 +24,7 @@
         <div class="header-list">
           <%= current_user.name %>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "" %>
+          <%= link_to "アカウント", user_path(current_user), class: "" %>
         </div>
       <% end %>
     </header>
