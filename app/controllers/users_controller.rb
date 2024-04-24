@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     else
       flash[:alert] = "プロフィール情報の変更に失敗しました。"
       session[:error_messages] = @user.errors.full_messages
-      redirect_to user_edit_path(@user)
+      redirect_to edit_user_path(@user)
     end
   end
 

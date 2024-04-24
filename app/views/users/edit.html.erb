@@ -1,9 +1,10 @@
-<div class="container">
+
   <div class="user-container">
+    <%= render "shared/error_messages", obj: @user %>
     <div class="account-information">
       <div class="account-information-header">
-        <h2>プロフィール</h2>
-      </div>      
+        <h2>プロフィール編集</h2>
+      </div>
       <div class="">
         <%= form_with model: @user, local: true do |f| %>
           <div class="account-information-item">
@@ -32,4 +33,4 @@
       </div>
     </div>
   </div>
-</div>
+
