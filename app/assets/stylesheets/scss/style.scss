@@ -1,0 +1,28 @@
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  background-color: peachpuff;
+  text-align: center;
+}  
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.header-icon {
+  width: 50px;
+  margin-right: 8px;
+  border-radius: 60px;
+}
+
+.icon-image {
+  width: 80px;
+  margin-right: 24px;
+  border-radius: 60px;
+}
