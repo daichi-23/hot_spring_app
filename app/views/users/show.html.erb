@@ -10,6 +10,8 @@
           <label class="account-information-label">アイコン画像</label>
           <% if @user.image? %>
             <%= image_tag @user.image.url, class: "icon-image" %>
+          <% else %>
+            <%= image_tag 'icon/default-icon.svg', class: "icon-image" %>
           <% end %>
         </div>
         <div class="account-information-item">
