@@ -17,6 +17,7 @@
           <h2><%= link_to "Discover Hot Springs", "/" %></h2>
           <% if (!user_signed_in?) %>
             <div class="header-list">
+              <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %>
               <%= link_to "ログイン", new_user_session_path %>
               <%= link_to "新規登録", new_user_registration_path, class: "button-orange" %>
             </div>
