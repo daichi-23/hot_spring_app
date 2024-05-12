@@ -20,6 +20,7 @@ class OnsensController < ApplicationController
 
   def show
     @onsen = Onsen.find(params[:id])
+    @user = User.find(@onsen.user_id)
   end
 
   def edit
@@ -47,6 +48,6 @@ class OnsensController < ApplicationController
   private
   
   def onsen_params
-    params.require(:onsen).permit(:onsen_name, :onsen_image, :onsen_introduction, :address, :user_id, :latitude, :longitude)
+    params.require(:onsen).permit(:onsen_name, :onsen_image, :onsen_introduction, :address, :user_id, :latitude, :longitude, :remove_onsen_image)
   end
 end

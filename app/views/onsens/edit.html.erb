@@ -1,18 +1,22 @@
 <div class="form-container">
-  <h2>温泉地を新規投稿</h2>
+  <h2>温泉地情報の編集</h2>
   <%= render "shared/error_messages", obj: @onsen %>
   <div id='map'></div>
 
   <script>
   let map
   let marker
-  const display = document.getElementById('display')
   function initMap(){
     geocoder = new google.maps.Geocoder()
 
     map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 35.6803997, lng:139.7690174},
+      center:  {lat: <%= @onsen.latitude %>, lng: <%= @onsen.longitude %>},
       zoom: 15,
+    });
+
+    marker = new google.maps.Marker({
+      position:  {lat: <%= @onsen.latitude %>, lng: <%= @onsen.longitude %>},
+      map: map
     });
   }
   let geocoder
@@ -45,13 +49,13 @@
   }
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
-  
+
   <%= form_with model: @onsen, local: true do |f| %>
     <div class="onsen-form-item">
       <%= f.label :address, "位置情報" %>
       <%= f.text_field :address, placeholder: "温泉所在地を入力", id: :address, class: "onsen-form-input" %>
       <input type="button" value="検索" onclick="codeAddress()">
-      <p>マーカーをドラッグ＆ドロップで位置の調整ができます。</p>
+      <p>検索後マーカーをドラッグ＆ドロップで位置の調整ができます。</p>
     </div>
     
     <div class="onsen-form-item">
@@ -63,8 +67,9 @@
       <%= f.text_area :onsen_introduction, placeholder: "温泉詳細を入力", class: "onsen-form-input" %>
     </div>
     <div class="onsen-form-item">
-      <%= f.label :onsen_image, "画像を追加する" %>
+      <%= f.label :onsen_image, "画像を変更する" %>
       <p class="onsen-form-input"><%= f.file_field :onsen_image, id: :onsen_pic %></p>
+      <p><%= f.check_box :remove_onsen_image %>画像を削除する</p>
     </div>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.hidden_field :latitude, id: :lat %>

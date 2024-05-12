@@ -1,11 +1,8 @@
-<div id='map'></div>
+<div class="posted-by">
+  <%= @user.name %>
+</div>
 
-<style>
-#map {
-  height: 600px;
-  width: 600px;
-}
-</style>
+<div id='map'></div>
 
 <script>
 let map
@@ -25,3 +22,29 @@ function initMap(){
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
+
+<div class="onsen-details-container">
+  <div class="onsen-details">
+    <% if @onsen.onsen_image.present? %>
+      <%= image_tag @onsen.onsen_image.url, class: "onsen-details-image" %>
+    <% else %>
+      <%= image_tag 'icon/default-onsen.jpg', class: "onsen-details-image" %>
+    <% end %>
+    <div class="onsen-details-body">
+      <p class="onsen-details-name"><%= @onsen.onsen_name %></p>
+      <p class="onsen-details-address"><%= @onsen.address %></p>
+      <p class="onsen-details-introduction"><%= @onsen.onsen_introduction %></p>
+    </div>
+  </div>
+  <div class="flat-navi" data-turbolinks="false">
+    <%= link_to "一覧に戻る", "/" %>
+    <% if current_user.present? %>
+      <% if current_user.id==@onsen.user_id %>
+        <div class="flat-navi">
+          <%= link_to "編集する", edit_onsen_path(@onsen), class: "" %>
+          <%= link_to "温泉を削除", @onsen, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -26,3 +26,41 @@ header {
   margin-right: 24px;
   border-radius: 60px;
 }
+
+#map {
+  height: 600px;
+  width: 700px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.onsen {
+  background-color: peachpuff;
+  margin: 5px;
+  width: calc(33.33333% - 21.33333px);
+}
+
+.onsen-image {
+  width: 100%;
+}
+
+.onsen-body {
+  padding: 20px;
+}
+
+.onsen-details-container {
+  width: 700px;
+}
+
+.onsen-details-image {
+  width: 700px;
+}
+
+.flat-navi {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
