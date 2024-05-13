@@ -1,0 +1,7 @@
+<div class="search-form-container">
+  <%= form_with url: search_onsens_path, method: :get, class: "search-form", local: true do |f| %>
+    <%= f.text_field :address, class: "search-box", placeholder: "所在地で検索" %>
+    <%= f.text_field :keyword, class: "search-box", placeholder: "キーワードで検索" %>
+    <%= f.submit :search, class: "search-button", value: "検索" %>
+  <% end %>
+</div>

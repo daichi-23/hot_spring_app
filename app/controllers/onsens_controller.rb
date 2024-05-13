@@ -45,6 +45,18 @@ class OnsensController < ApplicationController
     redirect_to onsens_path(@onsen)
   end
 
+  def search
+    if params[:address].present? && params[:keyword].present?
+      @onsens = Onsen.where('address LIKE ?', "%#{params[:address]}%").where('onsen_name LIKE ? OR onsen_introduction LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+    elsif params[:address].present?
+      @onsens = Onsen.where('address LIKE ?', "%#{params[:address]}%")
+    elsif params[:keyword].present?
+      @onsens = Onsen.where('onsen_name LIKE ? OR onsen_introduction LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+    else
+      @onsens = Onsen.all
+    end
+  end
+
   private
   
   def onsen_params

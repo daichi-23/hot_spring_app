@@ -1,4 +1,6 @@
 <%= render "shared/search_area" %>
+<h4><%= @onsens.count %>件が見つかりました。</h4>
+
 <div class="map-container">
   <div id='map'></div>
 
@@ -41,11 +43,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
 </div>
 
-<div class="" data-turbolinks="false">
-  <%= link_to "温泉地を投稿する。", new_onsen_path(@onsens) %>
-</div>
-
-<ul class="onsen-list">
+  <ul class="onsen-list">
     <% @onsens.each do |onsen| %> 
       <li class="onsen">
         <% if onsen.onsen_image.present? %>

@@ -12,5 +12,9 @@ Rails.application.routes.draw do
   
   resources:users
 
-  resources:onsens
+  resources:onsens do
+    collection do
+      get 'search'
+    end
+  end
 end
