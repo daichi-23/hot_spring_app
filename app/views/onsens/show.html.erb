@@ -1,28 +1,36 @@
-<div class="posted-by">
-  <%= @user.name %>
+<div class="onsen-details-header">
+  <h2>温泉詳細</h2>
+  <%= link_to user_path(@onsen.user), class: "posted-by" do %>
+    <% if @onsen.user.image? %>
+      <%= image_tag @onsen.user.image.url, class: "posted-by-image" %>
+    <% else %>
+      <%= image_tag 'icon/default-icon.svg', class: "icon-image" %>
+    <% end %>
+    <%= @onsen.user.name %>
+  <% end %>
 </div>
+<div class="map-container">
+  <div id='map'></div>
 
-<div id='map'></div>
+  <script>
+  let map
+  let marker
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
 
-<script>
-let map
-let marker
-function initMap(){
-  geocoder = new google.maps.Geocoder()
+    map = new google.maps.Map(document.getElementById('map'), {
+      center:  {lat: <%= @onsen.latitude %>, lng: <%= @onsen.longitude %>},
+      zoom: 15,
+    });
 
-  map = new google.maps.Map(document.getElementById('map'), {
-    center:  {lat: <%= @onsen.latitude %>, lng: <%= @onsen.longitude %>},
-    zoom: 15,
-  });
-
-   marker = new google.maps.Marker({
-    position:  {lat: <%= @onsen.latitude %>, lng: <%= @onsen.longitude %>},
-    map: map
-  });
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
-
+    marker = new google.maps.Marker({
+      position:  {lat: <%= @onsen.latitude %>, lng: <%= @onsen.longitude %>},
+      map: map
+    });
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
+</div>
 <div class="onsen-details-container">
   <div class="onsen-details">
     <% if @onsen.onsen_image.present? %>

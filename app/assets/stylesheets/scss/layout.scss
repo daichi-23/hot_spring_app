@@ -24,3 +24,32 @@
     width: calc(100% - 16px * 2);
   }
 }
+
+.flex-to-block {
+  display: flex;
+
+  @include xs-device-or-less {
+    display: block;
+  }
+}
+
+.account-information {
+  width: calc(33.33333% - 21.33333px);
+  padding: 0 20px 0 10px;
+
+  @include xs-device-or-less {
+    width: 100%;
+    padding: 0 10px 0;
+  }
+}
+
+.account-information-wrapper {
+  width: fit-content;
+  margin: 0 20px;
+  @include xs-device-or-less {
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+  }
+}
+

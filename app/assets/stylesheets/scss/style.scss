@@ -21,15 +21,62 @@ header {
   border-radius: 60px;
 }
 
+.account-information-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 45px;
+  grid-gap: 45px;
+  margin: 0 20px;
+}
+
+.user-account-container {
+  padding: 10px 0 10px;
+  border-bottom: 0.5px solid;
+}
+
+
 .icon-image {
   width: 80px;
-  margin-right: 24px;
   border-radius: 60px;
 }
 
+.account-information-name {
+  margin: 5px 0;
+}
+
+.account-information-introduction {
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-align: start;
+}
+
+.account-edit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 18px;
+  background-color: rgba(221, 218, 212, 0.933);
+  width: 60px;
+  height: 30px;
+  border: 0.5px solid;
+  cursor: pointer;
+}
+
+.user-post-title {
+  margin: 20px;
+}
+
+.map-container {
+  height: 500px;
+  width: 100%;
+}
+
 #map {
-  height: 600px;
-  width: 700px;
+  height: 100%;
+  width: 100%;
+  margin: auto;
 }
 
 ul {
@@ -37,9 +84,35 @@ ul {
   padding-left: 0;
 }
 
+.onsen-details-header {
+  margin: 20px;
+}
+
+.posted-by {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+  grid-gap: 20px;
+  width: fit-content;
+}
+
+.posted-by-image {
+  width: 40px;
+  border-radius: 60px;
+}
+
+.onsen-list {
+  display: flex;
+  grid-gap: 32px;
+  gap: 32px;
+  flex-wrap: wrap;
+
+  height: 700px;
+  overflow-y: scroll;
+}
+
 .onsen {
   background-color: peachpuff;
-  margin: 5px;
   width: calc(33.33333% - 21.33333px);
 }
 

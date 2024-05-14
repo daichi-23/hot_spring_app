@@ -42,7 +42,7 @@
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
 </div>
-
+<div class="">
   <ul class="onsen-list">
     <% @onsens.each do |onsen| %> 
       <li class="onsen">
@@ -60,3 +60,4 @@
       </li>
     <% end %>
   </ul>
+</div>

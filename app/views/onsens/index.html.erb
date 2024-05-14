@@ -44,8 +44,8 @@
 <div class="" data-turbolinks="false">
   <%= link_to "温泉地を投稿する。", new_onsen_path(@onsens) %>
 </div>
-
-<ul class="onsen-list">
+<div class="">
+  <ul class="onsen-list">
     <% @onsens.each do |onsen| %> 
       <li class="onsen">
         <% if onsen.onsen_image.present? %>
@@ -62,3 +62,4 @@
       </li>
     <% end %>
   </ul>
+</div>

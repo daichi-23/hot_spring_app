@@ -20,7 +20,6 @@ class OnsensController < ApplicationController
 
   def show
     @onsen = Onsen.find(params[:id])
-    @user = User.find(@onsen.user_id)
   end
 
   def edit

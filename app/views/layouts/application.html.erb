@@ -14,7 +14,7 @@
     <div class="container">
       <header>
         <div class="header-container">
-          <h2><%= link_to "Discover Hot Springs", "/" %></h2>
+          <h2 data-turbolinks="false"><%= link_to "Discover Hot Springs", "/" %></h2>
           <% if (!user_signed_in?) %>
             <div class="header-list" data-turbolinks="false">
               <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %>
