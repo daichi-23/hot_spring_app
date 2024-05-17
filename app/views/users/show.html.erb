@@ -3,19 +3,19 @@
     <h2>プロフィール</h2>
     <% if current_user.present? %>
       <% if current_user==@user %>
-        <div class="account-edit-button" data-turbolinks="false">
+        <div class="blue-link" data-turbolinks="false">
           <%= link_to "編集", edit_user_path(@user) %>
         </div>
       <% end %>
     <% end %>
   </div>
   <div class="user-account-container flex-to-block">
-    <div class="account-information">
-      <div class="account-information-wrapper">
+    <div class="account-information-wrapper">
+      <div class="account-information">
         <% if @user.image? %>
           <%= image_tag @user.image.url, class: "icon-image" %>
         <% else %>
-          <%= image_tag 'icon/default-icon.svg', class: "icon-image" %>
+          <%= image_tag 'icon/default-icon.png', class: "icon-image" %>
         <% end %>  
         <h3 class="account-information-name">
           <%= @user.name %>
@@ -28,24 +28,29 @@
     <div class="">※仮</div>
   </div>
   <div class="user-post-container">
-    <h2 class="user-post-title">投稿</h2>
-    <p>（<%= @user.onsens.count %>件）</p>
-    <ul class="onsen-list">
-      <% @user.onsens.each do |onsen| %> 
-        <li class="onsen">
-          <% if onsen.onsen_image.present? %>
-            <%= image_tag onsen.onsen_image.url, class: "onsen-image" %>
-          <% else %>
-            <%= image_tag 'icon/default-onsen.jpg', class: "onsen-image" %>
-          <% end %>
-          <div class="onsen-body" data-turbolinks="false">
-            <p class="onsen-name"><%= onsen.onsen_name %></p>
-            <p class="onsen-address"><%= onsen.address %></p>
-            <p class="onsen-introduction"><%= onsen.onsen_introduction %></p>
-            <%= link_to "詳細はこちら", onsen, class: "" %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+    <div class="user-post-title">
+      <h2>投稿</h2>
+      <p>（<%= @user.onsens.count %>件）</p>
+    </div>
+    <div class="onsen-container">
+      <ul class="onsen-list">
+        <% @user.onsens.each do |onsen| %> 
+          <li class="onsen">
+            <div class="onsen-image-wrapper">
+              <% if onsen.onsen_image.present? %>
+                <%= image_tag onsen.onsen_image.url, class: "onsen-image" %>
+              <% else %>
+                <%= image_tag 'icon/default-onsen.jpg', class: "onsen-image" %>
+              <% end %>
+            </div>
+            <div class="onsen-body" data-turbolinks="false">
+              <%= link_to onsen.onsen_name, onsen, class: "onsen-name" %>
+              <p class="onsen-address"><%= onsen.address %></p>
+              <p class="onsen-introduction"><%= onsen.onsen_introduction %></p>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>

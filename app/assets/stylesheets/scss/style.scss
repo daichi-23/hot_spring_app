@@ -6,7 +6,35 @@ a {
 header {
   background-color: peachpuff;
   text-align: center;
-}  
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+label {
+  margin: 4px 0;
+}
+
+.notice, .alert {
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.blue-link {
+  color: rgb(51, 102, 221);
+}
+
+.red-link {
+  color: rgb(237, 1, 1)
+}
+
+.flat-navi {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
 
 .header-container {
   display: flex;
@@ -16,9 +44,13 @@ header {
 }
 
 .header-icon {
-  width: 50px;
-  margin-right: 8px;
+  max-width: 50px;
+  max-height: 60px;
   border-radius: 60px;
+}
+
+.header-list-item {
+  font-size: 18px;
 }
 
 .account-information-header {
@@ -35,9 +67,9 @@ header {
   border-bottom: 0.5px solid;
 }
 
-
 .icon-image {
-  width: 80px;
+  max-width: 80px;
+  max-height: 80px;
   border-radius: 60px;
 }
 
@@ -51,26 +83,30 @@ header {
   text-align: start;
 }
 
-.account-edit-button {
+.blue-button {
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 4px;
+  color: white;
   font-size: 18px;
-  background-color: rgba(221, 218, 212, 0.933);
-  width: 60px;
-  height: 30px;
+  background-color: rgb(81, 127, 236);
+  width: fit-content;
+  padding: 5px 15px;
   border: 0.5px solid;
   cursor: pointer;
 }
 
-.user-post-title {
-  margin: 20px;
+.user-post-container {
+  margin: 15px 0;
 }
 
-.map-container {
-  height: 500px;
-  width: 100%;
+.user-post-title {
+  display: flex;
+  align-items:last baseline;
+  grid-gap: 5px;
+  gap: 5px;
+  margin: 0 20px;
 }
 
 #map {
@@ -79,41 +115,37 @@ header {
   margin: auto;
 }
 
-ul {
-  list-style: none;
-  padding-left: 0;
+.search-box {
+  position: relative;
+  padding: 10px 7px;
+  margin-bottom: 5px;
 }
 
-.onsen-details-header {
-  margin: 20px;
+.search-button {
+  padding: 10px 15px;
+  margin-bottom: 5px;
 }
 
-.posted-by {
-  display: flex;
+.onsen-index-header {
+  justify-content: space-between;
   align-items: center;
-  gap: 45px;
-  grid-gap: 20px;
-  width: fit-content;
-}
-
-.posted-by-image {
-  width: 40px;
-  border-radius: 60px;
+  margin-right: 20px;
 }
 
 .onsen-list {
-  display: flex;
-  grid-gap: 32px;
-  gap: 32px;
-  flex-wrap: wrap;
-
   height: 700px;
   overflow-y: scroll;
 }
 
 .onsen {
-  background-color: peachpuff;
-  width: calc(33.33333% - 21.33333px);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid;
+  margin-bottom: 10px;
+}
+
+.onsen-image-wrapper {
+  width: 33%;
 }
 
 .onsen-image {
@@ -122,18 +154,72 @@ ul {
 
 .onsen-body {
   padding: 20px;
+  width: 67%;
 }
 
-.onsen-details-container {
-  width: 700px;
+.onsen-name {
+  color: rgb(51, 102, 221);
+  font-size: 20px;
 }
 
-.onsen-details-image {
-  width: 700px;
-}
-
-.flat-navi {
-  display: flex;
+.onsen-search-header {
   justify-content: space-between;
-  gap: 16px;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.onsen-details-header {
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px 20px;
+}
+
+.posted-by {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  grid-gap: 5px;
+  width: fit-content;
+  margin: 0 10px 10px 0;
+}
+
+.posted-by-image {
+  max-width: 60px;
+  max-height: 73px;
+  border-radius: 60px;
+}
+
+.posted-by-name {
+  margin: 5px 0;
+}
+
+.onsen-date {
+  margin-bottom: 5px;
+}
+
+.onsen-form-item {
+  width: 100%;
+  padding: 7px;
+}
+
+.onsen-form-input {
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.form-link {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.user-form-item {
+  width: 100%;
+  padding: 7px;
+}
+
+.user-form-input {
+  width: 100%;
+  margin-bottom: 4px;
 }

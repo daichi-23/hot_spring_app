@@ -25,7 +25,7 @@ class OnsensController < ApplicationController
   def edit
     @onsen = Onsen.find(params[:id])
   end
-  
+
   def update
     @onsen = Onsen.find(params[:id])
     if @onsen.update(onsen_params)

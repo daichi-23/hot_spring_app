@@ -1,58 +1,60 @@
-<div class="onsen-details-header">
-  <h2>温泉詳細</h2>
-  <%= link_to user_path(@onsen.user), class: "posted-by" do %>
-    <% if @onsen.user.image? %>
-      <%= image_tag @onsen.user.image.url, class: "posted-by-image" %>
-    <% else %>
-      <%= image_tag 'icon/default-icon.svg', class: "icon-image" %>
-    <% end %>
-    <%= @onsen.user.name %>
-  <% end %>
-</div>
-<div class="map-container">
-  <div id='map'></div>
-
-  <script>
-  let map
-  let marker
-  function initMap(){
-    geocoder = new google.maps.Geocoder()
-
-    map = new google.maps.Map(document.getElementById('map'), {
-      center:  {lat: <%= @onsen.latitude %>, lng: <%= @onsen.longitude %>},
-      zoom: 15,
-    });
-
-    marker = new google.maps.Marker({
-      position:  {lat: <%= @onsen.latitude %>, lng: <%= @onsen.longitude %>},
-      map: map
-    });
-  }
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
-</div>
 <div class="onsen-details-container">
-  <div class="onsen-details">
-    <% if @onsen.onsen_image.present? %>
-      <%= image_tag @onsen.onsen_image.url, class: "onsen-details-image" %>
-    <% else %>
-      <%= image_tag 'icon/default-onsen.jpg', class: "onsen-details-image" %>
-    <% end %>
-    <div class="onsen-details-body">
-      <p class="onsen-details-name"><%= @onsen.onsen_name %></p>
-      <p class="onsen-details-address"><%= @onsen.address %></p>
-      <p class="onsen-details-introduction"><%= @onsen.onsen_introduction %></p>
+  <div class="onsen-details-header flex-to-block" data-turbolinks="false">
+    <div class="">
+      <h2>温泉詳細</h2>
+      <%= link_to user_path(@onsen.user), class: "posted-by" do %>
+        <% if @onsen.user.image? %>
+          <%= image_tag @onsen.user.image.url, class: "posted-by-image" %>
+        <% else %>
+          <%= image_tag 'icon/default-icon.png', class: "icon-image" %>
+        <% end %>
+        <h4 class="posted-by-name blue-link"><%= @onsen.user.name %></h4>
+      <% end %>
+    </div>
+    <div class="flat-navi">
+      <% if current_user.present? %>
+        <% if current_user.id==@onsen.user_id %>
+          <%= link_to "編集する", edit_onsen_path(@onsen), class: "blue-link" %>
+          <%= link_to "温泉を削除", @onsen, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "red-link" %>
+        <% end %>
+      <% end %>
     </div>
   </div>
-  <div class="flat-navi" data-turbolinks="false">
-    <%= link_to "一覧に戻る", "/" %>
-    <% if current_user.present? %>
-      <% if current_user.id==@onsen.user_id %>
-        <div class="flat-navi">
-          <%= link_to "編集する", edit_onsen_path(@onsen), class: "" %>
-          <%= link_to "温泉を削除", @onsen, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "" %>
-        </div>
+  <div class="onsen-details">
+    <div class="onsen-details-image-wrapper">
+      <% if @onsen.onsen_image.present? %>
+        <%= image_tag @onsen.onsen_image.url, class: "onsen-image" %>
+      <% else %>
+        <%= image_tag 'icon/default-onsen.jpg', class: "onsen-image" %>
       <% end %>
-    <% end %>
+    </div>
+    <div class="onsen-details-body" data-turbolinks="false">
+      <p class="onsen-name"><%= link_to @onsen.onsen_name, onsen_path(@onsen) %></p>
+      <p class="onsen-address"><%= @onsen.address %></p>
+      <p class="onsen-introduction"><%= @onsen.onsen_introduction %></p>
+      <div class="onsen-date-group">
+        <p class="onsen-date">投稿日：<%= @onsen.created_at.to_s(:datetime_jp) %></p>
+        <p class="onsen-date">更新日：<%= @onsen.updated_at.to_s(:datetime_jp) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="map-container">
+    <div id='map'></div>
+    <script>
+    let map
+    let marker
+    function initMap(){
+      geocoder = new google.maps.Geocoder()
+      map = new google.maps.Map(document.getElementById('map'), {
+        center:  {lat: <%= @onsen.latitude %>, lng: <%= @onsen.longitude %>},
+        zoom: 15,
+      });
+      marker = new google.maps.Marker({
+        position:  {lat: <%= @onsen.latitude %>, lng: <%= @onsen.longitude %>},
+        map: map
+      });
+    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
   </div>
 </div>
