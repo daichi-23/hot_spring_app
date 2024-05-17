@@ -1,0 +1,79 @@
+<div class="onsen-form-container">
+  <h2>温泉地を新規投稿</h2>
+  <%= render "shared/error_messages", obj: @onsen %>
+  <div class="map-container">
+    <div id='map'></div>
+    <script>
+    let map
+    let marker
+    const display = document.getElementById('display')
+    function initMap(){
+      geocoder = new google.maps.Geocoder()
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 35.6803997, lng:139.7690174},
+        zoom: 15,
+      });
+    }
+    let geocoder
+    let aft
+    function codeAddress(){
+      let inputAddress = document.getElementById('address').value;
+      geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+        if (status == 'OK') {
+          if (aft == true){
+            marker.setMap(null);
+          }
+          map.setCenter(results[0].geometry.location);
+              marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location,
+              draggable: true
+          });
+          aft = true
+          document.getElementById('lat').value = results[0].geometry.location.lat();
+          document.getElementById('lng').value = results[0].geometry.location.lng();
+          google.maps.event.addListener( marker, 'dragend', function(ev){
+            document.getElementById('lat').value = ev.latLng.lat();
+            document.getElementById('lng').value = ev.latLng.lng();
+          });
+          display.textContent = "検索結果：" + results[ 0 ].geometry.location
+        } else {
+          alert('該当する結果がありませんでした：' + status);
+        }
+      });
+    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
+  </div>
+  <div class="form-container">
+    <%= form_with model: @onsen, local: true do |f| %>
+      <div class="onsen-form-item">
+        <%= f.label :address, "所在地" %>
+        <div class="onsen-form-input">
+          <%= f.text_field :address, placeholder: "温泉所在地を入力", id: :address %>
+          <input type="button" value="検索" onclick="codeAddress()">
+        </div>
+        <span>マーカーをドラッグ＆ドロップで位置の調整ができます。</span>
+      </div>
+      <div class="onsen-form-item">
+        <%= f.label :onsen_name, "温泉名" %>
+        <%= f.text_field :onsen_name, placeholder: "温泉名を入力", class: "onsen-form-input" %>
+      </div>
+      <div class="onsen-form-item">
+        <%= f.label :onsen_introduction, "温泉詳細" %>
+        <%= f.text_area :onsen_introduction, placeholder: "温泉詳細を入力", class: "onsen-form-input" %>
+      </div>
+      <div class="onsen-form-item">
+        <%= f.label :onsen_image, "画像を追加する" %>
+        <%= f.file_field :onsen_image, class: "onsen-form-input" %>
+      </div>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :latitude, id: :lat %>
+      <%= f.hidden_field :longitude, id: :lng %>
+      <div class="onsen-form-item" data-turbolinks="false">
+        <%= f.submit "保存", class: "form-link blue-button" %>
+        <%= link_to "キャンセル", :back, class: "form-link" %>
+      </div>
+    <% end %>
+  </div>
+</div>

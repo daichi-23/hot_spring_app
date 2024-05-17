@@ -1,0 +1,66 @@
+<div class="onsen-index-header flex-to-block" data-turbolinks="false">
+  <%= render "shared/search_area" %>
+  <% if current_user.present? %>
+    <%= link_to "温泉地を投稿する", new_onsen_path(@onsens), class: "blue-button" %>
+  <% end %>
+</div>
+<div class="map-container">
+  <div id='map'></div>
+  <script>
+    function initMap() {
+      let latlng = new google.maps.LatLng(38.60, 139.5);      
+      let styles = [
+           {
+            stylers: [
+             { "saturation": 0 },
+             { "lightness": 0 }
+            ]
+           }
+          ];
+      let map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 5.5,
+          styles: styles,
+          center: latlng
+      });
+      let transitLayer = new google.maps.TransitLayer();
+      transitLayer.setMap(map);
+      <% @onsens.each do |onsen|%>
+        ( function() { 
+          let markerLatLng = { lat: <%= onsen.latitude %>, lng: <%= onsen.longitude %> }; 
+          let marker = new google.maps.Marker({ 
+            position: markerLatLng, 
+            map: map 
+          });
+          let infowindow = new google.maps.InfoWindow({
+            position: markerLatLng,
+            content: "<a href='<%= onsen_url(onsen.id) %>' target='_blank'><%= onsen.onsen_name %></a>"
+          }); 
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+        })();
+      <% end %>
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
+</div>
+<div class="onsen-container">
+  <ul class="onsen-list">
+    <% @onsens.each do |onsen| %> 
+      <li class="onsen">
+        <div class="onsen-image-wrapper">
+          <% if onsen.onsen_image.present? %>
+            <%= image_tag onsen.onsen_image.url, class: "onsen-image" %>
+          <% else %>
+            <%= image_tag 'icon/default-onsen.jpg', class: "onsen-image" %>
+          <% end %>
+        </div>
+        <div class="onsen-body" data-turbolinks="false">
+          <p class="onsen-name"><%= link_to onsen.onsen_name, onsen_path(onsen) %></p>
+          <p class="onsen-address"><%= onsen.address %></p>
+          <p class="onsen-introduction"><%= onsen.onsen_introduction %></p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

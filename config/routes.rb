@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'home#index'
+  root to: 'onsens#index'
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
@@ -11,4 +11,10 @@ Rails.application.routes.draw do
   get 'users' => 'users#dummy'
   
   resources:users
+
+  resources:onsens do
+    collection do
+      get 'search'
+    end
+  end
 end

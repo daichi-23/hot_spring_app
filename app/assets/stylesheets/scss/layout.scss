@@ -1,7 +1,7 @@
 @import "./_break-points.scss";
 
 .container {
-  margin: 0 auto;
+  margin: 0 auto 100px;
   max-width: 1440px;
 
   @include xl-device {
@@ -24,3 +24,148 @@
     width: calc(100% - 16px * 2);
   }
 }
+
+.flex-to-block {
+  display: flex;
+
+  @include xs-device-or-less {
+    display: block;
+  }
+}
+
+.header-list {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  @include sm-device-or-less {
+    display: none;
+  }
+}
+
+.drop-down {
+  display: none;
+
+  @include sm-device-or-less {
+    display: block;
+  }
+}
+
+.account-information-wrapper {
+  width: 33%;
+  padding: 0 10px;
+
+  @include xs-device-or-less {
+    width: 100%;
+    padding: 0 10px 0;
+  }
+}
+
+.account-information {
+  width: fit-content;
+  margin: 0 20px;
+
+  @include xs-device-or-less {
+    margin: auto;
+    text-align: center;
+  }
+}
+
+.map-container {
+  height: 500px;
+  width: 100%;
+  margin: 10px 0;
+
+  @include xs-device-or-less {
+    height: 400px;
+  }
+}
+
+.onsen-details-container {
+  width: 80%;
+  margin: auto;
+
+  @include sm-device {
+    width: 90%;
+    margin: auto;
+  }
+
+  @include xs-device-or-less {
+    width: 100%;
+  }
+}
+
+.onsen-details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+  @include sm-device-or-less {
+    display: block;
+  }
+}
+
+.onsen-details-image-wrapper {
+  width: 50%;
+
+  @include sm-device-or-less {
+    width: 100%;
+  }
+}
+
+.onsen-details-body {
+  padding: 20px;
+  width: 50%;
+
+  @include sm-device-or-less {
+    width: 100%;
+  }
+}
+
+.onsen-date-group {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+
+  @include xxs-device {
+    display: block;
+  }
+}
+
+.onsen-form-container {
+  width: 80%;
+  margin: auto;
+
+  @include sm-device {
+    width: 90%;
+    margin: auto;
+  }
+
+  @include xs-device-or-less {
+    width: 100%;
+  }
+}
+
+.form-container {
+  width: 80%;
+  margin: auto;
+
+  @include sm-device-or-less {
+    width: 100%;
+  }
+}
+
+.user-form-container {
+  width: 80%;
+  margin: auto;
+
+  @include sm-device {
+    width: 90%;
+    margin: auto;
+  }
+
+  @include xs-device-or-less {
+    width: 100%;
+  }
+}
+

@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      onsen: 温泉
+    attributes:
+      onsen:
+        onsen_name: 温泉名
+        onsen_image: 画像
+        onsen_introduction: 温泉詳細
+        address: 所在地
+        

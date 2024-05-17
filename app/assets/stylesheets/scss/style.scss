@@ -6,7 +6,35 @@ a {
 header {
   background-color: peachpuff;
   text-align: center;
-}  
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+label {
+  margin: 4px 0;
+}
+
+.notice, .alert {
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.blue-link {
+  color: rgb(51, 102, 221);
+}
+
+.red-link {
+  color: rgb(237, 1, 1)
+}
+
+.flat-navi {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
 
 .header-container {
   display: flex;
@@ -16,13 +44,182 @@ header {
 }
 
 .header-icon {
-  width: 50px;
-  margin-right: 8px;
+  max-width: 50px;
+  max-height: 60px;
   border-radius: 60px;
 }
 
+.header-list-item {
+  font-size: 18px;
+}
+
+.account-information-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 45px;
+  grid-gap: 45px;
+  margin: 0 20px;
+}
+
+.user-account-container {
+  padding: 10px 0 10px;
+  border-bottom: 0.5px solid;
+}
+
 .icon-image {
-  width: 80px;
-  margin-right: 24px;
+  max-width: 80px;
+  max-height: 80px;
   border-radius: 60px;
+}
+
+.account-information-name {
+  margin: 5px 0;
+}
+
+.account-information-introduction {
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-align: start;
+}
+
+.blue-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: white;
+  font-size: 18px;
+  background-color: rgb(81, 127, 236);
+  width: fit-content;
+  padding: 5px 15px;
+  border: 0.5px solid;
+  cursor: pointer;
+}
+
+.user-post-container {
+  margin: 15px 0;
+}
+
+.user-post-title {
+  display: flex;
+  align-items:last baseline;
+  grid-gap: 5px;
+  gap: 5px;
+  margin: 0 20px;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+.search-box {
+  position: relative;
+  padding: 10px 7px;
+  margin-bottom: 5px;
+}
+
+.search-button {
+  padding: 10px 15px;
+  margin-bottom: 5px;
+}
+
+.onsen-index-header {
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.onsen-list {
+  height: 700px;
+  overflow-y: scroll;
+}
+
+.onsen {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid;
+  margin-bottom: 10px;
+}
+
+.onsen-image-wrapper {
+  width: 33%;
+}
+
+.onsen-image {
+  width: 100%;
+}
+
+.onsen-body {
+  padding: 20px;
+  width: 67%;
+}
+
+.onsen-name {
+  color: rgb(51, 102, 221);
+  font-size: 20px;
+}
+
+.onsen-search-header {
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.onsen-details-header {
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px 20px;
+}
+
+.posted-by {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  grid-gap: 5px;
+  width: fit-content;
+  margin: 0 10px 10px 0;
+}
+
+.posted-by-image {
+  max-width: 60px;
+  max-height: 73px;
+  border-radius: 60px;
+}
+
+.posted-by-name {
+  margin: 5px 0;
+}
+
+.onsen-date {
+  margin-bottom: 5px;
+}
+
+.onsen-form-item {
+  width: 100%;
+  padding: 7px;
+}
+
+.onsen-form-input {
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.form-link {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.user-form-item {
+  width: 100%;
+  padding: 7px;
+}
+
+.user-form-input {
+  width: 100%;
+  margin-bottom: 4px;
 }
