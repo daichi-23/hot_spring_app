@@ -1,5 +1,6 @@
 class Onsen < ApplicationRecord
   belongs_to :user
+  has_many :favorites, dependent: :destroy
 
   validates :onsen_name, presence: true
   validates :onsen_introduction, presence: true
