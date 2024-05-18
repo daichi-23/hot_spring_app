@@ -60,6 +60,7 @@
           <p class="onsen-name"><%= link_to onsen.onsen_name, onsen_path(onsen) %></p>
           <p class="onsen-address"><%= onsen.address %></p>
           <p class="onsen-introduction"><%= onsen.onsen_introduction %></p>
+          <%= render "shared/fav_btn", onsen: onsen %>
         </div>
       </li>
     <% end %>

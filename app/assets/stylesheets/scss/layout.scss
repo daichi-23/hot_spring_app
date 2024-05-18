@@ -54,6 +54,22 @@
 .account-information-wrapper {
   width: 33%;
   padding: 0 10px;
+  display: flex;
+
+  @include xs-device-or-less {
+    width: 100%;
+    padding: 0 10px 10px;
+  }
+}
+
+.account-information {
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+}
+
+.favorited-onsen-list {
+  width: 67%;
 
   @include xs-device-or-less {
     width: 100%;
@@ -61,13 +77,12 @@
   }
 }
 
-.account-information {
-  width: fit-content;
-  margin: 0 20px;
+.favorited-onsen {
+  max-height: 400px;
+  overflow-y: scroll;
 
   @include xs-device-or-less {
-    margin: auto;
-    text-align: center;
+    max-height: 300px;
   }
 }
 
@@ -107,6 +122,7 @@
 
 .onsen-details-image-wrapper {
   width: 50%;
+  text-align: center;
 
   @include sm-device-or-less {
     width: 100%;

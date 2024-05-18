@@ -63,7 +63,7 @@ label {
 }
 
 .user-account-container {
-  padding: 10px 0 10px;
+  padding: 10px 0 20px;
   border-bottom: 0.5px solid;
 }
 
@@ -81,6 +81,19 @@ label {
   font-size: 14px;
   margin-bottom: 5px;
   text-align: start;
+}
+
+.favorited-onsen-title {
+  margin: 10px;
+}
+
+.favorited-onsen-body {
+  padding: 10px 20px;
+  border-top: 1px dotted;
+}
+
+.favolited-onsen-item {
+  margin-bottom: 4px;
 }
 
 .blue-button {
@@ -132,11 +145,6 @@ label {
   margin-right: 20px;
 }
 
-.onsen-list {
-  height: 700px;
-  overflow-y: scroll;
-}
-
 .onsen {
   display: flex;
   align-items: center;
@@ -146,10 +154,12 @@ label {
 
 .onsen-image-wrapper {
   width: 33%;
+  text-align: center;
 }
 
 .onsen-image {
-  width: 100%;
+  max-width: 100%;
+  max-height: 300px;
 }
 
 .onsen-body {
@@ -191,6 +201,11 @@ label {
 
 .posted-by-name {
   margin: 5px 0;
+}
+
+.onsen-details-image {
+  max-width: 100%;
+  max-height: 400px;
 }
 
 .onsen-date {

@@ -7,4 +7,8 @@ class Onsen < ApplicationRecord
   validates :address, presence: true
 
   mount_uploader :onsen_image, ImgUploader
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
 end
