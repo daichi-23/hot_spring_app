@@ -64,7 +64,8 @@ label {
 
 .user-account-container {
   padding: 10px 0 20px;
-  border-bottom: 0.5px solid;
+  background-color: rgb(217, 243, 234);
+  margin-bottom: 5px;
 }
 
 .icon-image {
@@ -75,6 +76,7 @@ label {
 
 .account-information-name {
   margin: 5px 0;
+  font-size: 24px;
 }
 
 .account-information-introduction {
@@ -112,6 +114,7 @@ label {
 
 .user-post-container {
   margin: 15px 0;
+  border-top: 1px solid;
 }
 
 .user-post-title {
@@ -201,6 +204,7 @@ label {
 
 .posted-by-name {
   margin: 5px 0;
+  font-size: 24px;
 }
 
 .onsen-details-image {

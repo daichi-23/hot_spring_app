@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get 'users' => 'users#dummy'
   
-  resources:users do
+  resources:users, only: [:show, :edit, :update] do
     member do
       get :favorites
     end

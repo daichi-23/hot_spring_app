@@ -53,23 +53,25 @@
 
 .account-information-wrapper {
   width: 33%;
-  padding: 0 10px;
+  padding: 0 30px;
   display: flex;
 
   @include xs-device-or-less {
     width: 100%;
-    padding: 0 10px 10px;
+    padding: 0 30px 10px;
   }
 }
 
 .account-information {
   width: fit-content;
+  padding-top: 15px;
   margin: auto;
   text-align: center;
 }
 
 .favorited-onsen-list {
   width: 67%;
+  padding: 10px;
 
   @include xs-device-or-less {
     width: 100%;
@@ -80,6 +82,7 @@
 .favorited-onsen {
   max-height: 400px;
   overflow-y: scroll;
+  background-color: white;
 
   @include xs-device-or-less {
     max-height: 300px;
@@ -184,4 +187,3 @@
     width: 100%;
   }
 }
-
