@@ -25,7 +25,18 @@
         </div>
       </div>
     </div>
-    <div class="">※仮</div>
+    <div class="favorited-onsen-list">
+      <h3 class="favorited-onsen-title">行きたい温泉リスト</h3>
+      <div class="favorited-onsen">
+        <% @favorites.each do |onsen| %>
+          <div class="favorited-onsen-body" data-turbolinks="false">
+            <p class="onsen-name favolited-onsen-item"><%= link_to onsen.onsen_name, onsen_path(onsen) %></p>
+            <p class="favolited-onsen-item"><%= onsen.address %></p>
+            <p class="favolited-onsen-item"><%= onsen.onsen_introduction %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
   <div class="user-post-container">
     <div class="user-post-title">
@@ -44,9 +55,14 @@
               <% end %>
             </div>
             <div class="onsen-body" data-turbolinks="false">
-              <%= link_to onsen.onsen_name, onsen, class: "onsen-name" %>
+              <p class="onsen-name"><%= link_to onsen.onsen_name, onsen_path(onsen) %></p>
               <p class="onsen-address"><%= onsen.address %></p>
               <p class="onsen-introduction"><%= onsen.onsen_introduction %></p>
+              <div class="onsen-date-group">
+                <p class="onsen-date">投稿日：<%= onsen.created_at.to_s(:datetime_jp) %></p>
+                <p class="onsen-date">更新日：<%= onsen.updated_at.to_s(:datetime_jp) %></p>
+              </div>
+              <%= render "shared/fav_btn", onsen: onsen %>
             </div>
           </li>
         <% end %>

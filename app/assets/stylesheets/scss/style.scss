@@ -63,8 +63,9 @@ label {
 }
 
 .user-account-container {
-  padding: 10px 0 10px;
-  border-bottom: 0.5px solid;
+  padding: 10px 0 20px;
+  background-color: rgb(217, 243, 234);
+  margin-bottom: 5px;
 }
 
 .icon-image {
@@ -75,12 +76,26 @@ label {
 
 .account-information-name {
   margin: 5px 0;
+  font-size: 24px;
 }
 
 .account-information-introduction {
   font-size: 14px;
   margin-bottom: 5px;
   text-align: start;
+}
+
+.favorited-onsen-title {
+  margin: 10px;
+}
+
+.favorited-onsen-body {
+  padding: 10px 20px;
+  border-top: 1px dotted;
+}
+
+.favolited-onsen-item {
+  margin-bottom: 4px;
 }
 
 .blue-button {
@@ -99,6 +114,7 @@ label {
 
 .user-post-container {
   margin: 15px 0;
+  border-top: 1px solid;
 }
 
 .user-post-title {
@@ -132,11 +148,6 @@ label {
   margin-right: 20px;
 }
 
-.onsen-list {
-  height: 700px;
-  overflow-y: scroll;
-}
-
 .onsen {
   display: flex;
   align-items: center;
@@ -146,10 +157,12 @@ label {
 
 .onsen-image-wrapper {
   width: 33%;
+  text-align: center;
 }
 
 .onsen-image {
-  width: 100%;
+  max-width: 100%;
+  max-height: 300px;
 }
 
 .onsen-body {
@@ -191,6 +204,12 @@ label {
 
 .posted-by-name {
   margin: 5px 0;
+  font-size: 24px;
+}
+
+.onsen-details-image {
+  max-width: 100%;
+  max-height: 400px;
 }
 
 .onsen-date {

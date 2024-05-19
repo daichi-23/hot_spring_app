@@ -4,6 +4,9 @@ ja:
       user: ユーザー
       onsen: 温泉
     attributes:
+      user:
+        image: 画像
+        introduction: 自己紹介
       onsen:
         onsen_name: 温泉名
         onsen_image: 画像

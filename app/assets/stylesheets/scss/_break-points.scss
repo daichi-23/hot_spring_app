@@ -2,7 +2,7 @@ $xl-min: 1920px;
 $lg-min: 1440px;
 $md-min: 1152px;
 $sm-min: 768px;
-$xs-min: 430px;
+$xs-min: 600px;
 
 @mixin xl-device {
   @media screen and (min-width: $xl-min) {

@@ -10,11 +10,16 @@ Rails.application.routes.draw do
 
   get 'users' => 'users#dummy'
   
-  resources:users
+  resources:users, only: [:show, :edit, :update] do
+    member do
+      get :favorites
+    end
+  end
 
   resources:onsens do
     collection do
       get 'search'
     end
+    resource:favorites, only: [:create, :destroy]
   end
 end

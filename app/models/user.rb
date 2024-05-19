@@ -5,8 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :onsens, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, presence: true, length: {maximum: 50}
+  validates :introduction, length: {maximum: 300}
 
   mount_uploader :image, ImgUploader
 
