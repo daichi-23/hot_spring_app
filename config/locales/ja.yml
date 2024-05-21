@@ -12,4 +12,5 @@ ja:
         onsen_image: 画像
         onsen_introduction: 温泉詳細
         address: 所在地
+        latitude: 所在地をマップで検索し位置情報
         

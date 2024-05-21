@@ -11,7 +11,7 @@ class OnsensController < ApplicationController
     @onsen = Onsen.new(onsen_params)
     if @onsen.save
       flash[:notice] = "温泉地が投稿されました。"
-      redirect_to onsens_path(@onsen)
+      redirect_to onsens_path
     else
       session[:error_messages] = @onsen.errors.full_messages   
       redirect_to new_onsen_path
@@ -41,7 +41,7 @@ class OnsensController < ApplicationController
     @onsen = Onsen.find(params[:id])
     @onsen.destroy
     flash[:notice] = "温泉地が削除されました。"
-    redirect_to onsens_path(@onsen)
+    redirect_to onsens_path
   end
 
   def search
