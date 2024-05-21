@@ -3,8 +3,9 @@ class Onsen < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   validates :onsen_name, presence: true, length: {maximum: 50}
-  validates :onsen_introduction, presence: true, length: {in: 5..30}
+  validates :onsen_introduction, presence: true, length: {in: 5..300}
   validates :address, presence: true, length: {maximum: 100}
+  validates :latitude, presence: true
 
   mount_uploader :onsen_image, ImgUploader
 
