@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "Favorites", type: :system do
 
   describe "行きたい温泉リスト" do
-    let!(:user) { create(:user) }
-    let!(:onsen) { create(:onsen, user: user) }
+    let(:user) { create(:user) }
+    let!(:onsen) { create(:onsen) }
 
     it "ユーザーが投稿を追加・解除できること" do
       sign_in onsen.user

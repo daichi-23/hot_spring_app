@@ -24,7 +24,7 @@ RSpec.describe "Onsens", type: :system do
   end
 
   describe "温泉詳細画面の表示・リンクのテスト" do
-    let!(:user) { create(:user) }
+    let(:user) { create(:user) }
     let!(:onsen) { create(:onsen, user: user) }
     before do
       sign_in onsen.user
