@@ -61,3 +61,5 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'carrierwave'
 gem 'dotenv-rails'
+
+gem 'psych', '~> 3.1'
