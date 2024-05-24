@@ -1,8 +1,10 @@
 # Discover Hot Springs
 
-![image](https://github.com/daichi-23/hot_spring_app/edit/main/images/app-home.png) 
+You can check out the app on [Heroku](https://dihotsprings-8487653a13cb.herokuapp.com/)!
 
-![image](https://github.com/daichi-23/hot_spring_app/edit/main/images/app-new.png)
+https://github.com/daichi-23/hot_spring_app/blob/main/app/assets/images/readme/app-home.png
+https://github.com/daichi-23/hot_spring_app/blob/main/app/assets/images/readme/app-new.png
+
 
 ## about
 With this app, you can find hot springs posted by other users on the map.  
