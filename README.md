@@ -2,8 +2,8 @@
 
 You can check out the app on [Heroku](https://dihotsprings-8487653a13cb.herokuapp.com/)!
 
-https://github.com/daichi-23/hot_spring_app/blob/main/app/assets/images/readme/app-home.png
-https://github.com/daichi-23/hot_spring_app/blob/main/app/assets/images/readme/app-new.png
+![image](https://github.com/daichi-23/hot_spring_app/blob/main/app/assets/images/readme/app-home.png)
+![image](https://github.com/daichi-23/hot_spring_app/blob/main/app/assets/images/readme/app-new.png)
 
 
 ## about
