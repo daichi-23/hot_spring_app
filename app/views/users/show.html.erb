@@ -41,11 +41,11 @@
   <div class="user-post-container">
     <div class="user-post-title">
       <h2>投稿</h2>
-      <p>（<%= @user.onsens.count %>件）</p>
+      <p>（<%= @onsen.count %>件）</p>
     </div>
     <div class="onsen-container">
       <ul class="onsen-list">
-        <% @user.onsens.each do |onsen| %> 
+        <% @onsen.each do |onsen| %> 
           <li class="onsen">
             <div class="onsen-image-wrapper">
               <% if onsen.onsen_image.present? %>

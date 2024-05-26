@@ -1,6 +1,6 @@
 class OnsensController < ApplicationController
   def index
-    @onsens = Onsen.all
+    @onsens = Onsen.order("updated_at DESC")
   end
 
   def new
@@ -46,13 +46,13 @@ class OnsensController < ApplicationController
 
   def search
     if params[:address].present? && params[:keyword].present?
-      @onsens = Onsen.where('address LIKE ?', "%#{params[:address]}%").where('onsen_name LIKE ? OR onsen_introduction LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+      @onsens = Onsen.where('address LIKE ?', "%#{params[:address]}%").where('onsen_name LIKE ? OR onsen_introduction LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%").order("updated_at DESC")
     elsif params[:address].present?
-      @onsens = Onsen.where('address LIKE ?', "%#{params[:address]}%")
+      @onsens = Onsen.where('address LIKE ?', "%#{params[:address]}%").order("updated_at DESC")
     elsif params[:keyword].present?
-      @onsens = Onsen.where('onsen_name LIKE ? OR onsen_introduction LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+      @onsens = Onsen.where('onsen_name LIKE ? OR onsen_introduction LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%").order("updated_at DESC")
     else
-      @onsens = Onsen.all
+      @onsens = Onsen.all.order("updated_at DESC")
     end
   end
 
