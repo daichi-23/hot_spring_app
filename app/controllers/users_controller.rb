@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @onsen = @user.onsens.order("updated_at DESC")
     my_favorites = Favorite.where(user_id: @user.id).pluck(:onsen_id)
     @favorites = Onsen.find(my_favorites)
   end

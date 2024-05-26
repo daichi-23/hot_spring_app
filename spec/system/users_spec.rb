@@ -102,4 +102,47 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_content("ログアウト")
     end
   end
+
+  describe "ユーザー詳細画面の表示・リンクのテスト" do
+    let(:user) { create(:user) }
+    let!(:onsen) { create(:onsen, user: user) }
+    let!(:onsen_2) { create(:onsen, :onsen_2, user: user) }
+    before do
+      sign_in user
+      visit user_path(user.id)
+    end
+
+    it "プロフィールが表示されていること" do
+      expect(page).to have_content user.name
+      expect(page).to have_content user.introduction
+    end
+
+    it "プロフィール編集ページへのリンクが表示されていること" do
+      expect(page).to have_content "編集"
+    end
+
+    it "編集リンクのクリックでページが遷移すること" do
+      click_on "編集"
+      expect(current_path).to eq edit_user_path(user.id)
+    end
+
+    it "温泉情報が表示されていること" do
+      within ".onsen-list" do
+        expect(page).to have_content onsen.onsen_name
+        expect(page).to have_content onsen.address
+        expect(page).to have_content onsen.onsen_introduction
+      end
+    end
+
+    it "温泉が更新が新しい順に並んでいること" do 
+      expect(page.text).to match %r{#{onsen_2.onsen_name}[\s\S]*#{onsen.onsen_name}}
+    end
+    
+    it "温泉名のクリックでページが遷移すること" do
+      within ".onsen-list" do
+        click_on onsen.onsen_name
+      end
+      expect(current_path).to eq onsen_path(onsen.id)
+    end
+  end
 end
