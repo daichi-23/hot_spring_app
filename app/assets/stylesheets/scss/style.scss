@@ -149,6 +149,25 @@ label {
   margin-right: 20px;
 }
 
+.sort-navi {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.sort-navi-button {
+  width: 50%;
+  padding: 30px 10px 10px;
+  margin-bottom: 0;
+  border-bottom: 1px solid;
+}
+
+.sort-navi-button:first-of-type {
+  border-right: 0.5px solid;
+}
+
 .onsen {
   display: flex;
   align-items: center;

@@ -45,6 +45,10 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
 </div>
 <div class="onsen-container">
+  <div class="sort-navi" data-turbolinks="false">
+    <h4 class="sort-navi-button"><%= link_to "更新順", "/" %></h4>
+    <h4 class="sort-navi-button"><%= link_to "人気順", onsens_path(sort_fav: "true") %></h4>
+  </div>
   <ul class="onsen-list">
     <% @onsens.each do |onsen| %> 
       <li class="onsen">
