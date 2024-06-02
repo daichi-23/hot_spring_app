@@ -48,19 +48,19 @@
   <div class="form-container">
     <%= form_with model: @onsen, local: true do |f| %>
       <div class="onsen-form-item">
-        <%= f.label :address, "所在地" %>
-        <div class="onsen-form-input">
-          <%= f.text_field :address, placeholder: "温泉所在地を入力", id: :address %>
-          <input type="button" value="検索" onclick="codeAddress()">
+        <%= f.label :address, "所在地" %><span aria-hidden="true", class="form-require">※必須</span>
+        <div>
+          <%= f.text_field :address, placeholder: "温泉所在地を入力", id: :address, class: "onsen-form-input-address" %>
+          <input type="button" value="検索" onclick="codeAddress()" class="onsen-form-input-address">
         </div>
-        <span>マーカーをドラッグ＆ドロップで位置の調整ができます。</span>
+        <span>検索後マーカーをドラッグ＆ドロップで位置の調整ができます。</span>
       </div>
       <div class="onsen-form-item">
-        <%= f.label :onsen_name, "温泉名" %>
+        <%= f.label :onsen_name, "温泉名" %><span aria-hidden="true", class="form-require">※必須</span>
         <%= f.text_field :onsen_name, placeholder: "温泉名を入力", class: "onsen-form-input" %>
       </div>
       <div class="onsen-form-item">
-        <%= f.label :onsen_introduction, "温泉詳細" %>
+        <%= f.label :onsen_introduction, "温泉詳細" %><span aria-hidden="true", class="form-require">※必須</span>
         <%= f.text_area :onsen_introduction, placeholder: "温泉詳細を入力", class: "onsen-form-input" %>
       </div>
       <div class="onsen-form-item">
