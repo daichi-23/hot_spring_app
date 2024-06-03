@@ -1,7 +1,8 @@
 class Onsen < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
-  has_many :favorited_users, through: :favorites, source: :user 
+  has_many :favorited_users, through: :favorites, source: :user
+  has_many :collections, dependent: :destroy
 
   validates :onsen_name, presence: true, length: {maximum: 50}
   validates :onsen_introduction, presence: true, length: {in: 5..300}
