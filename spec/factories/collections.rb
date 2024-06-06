@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :collection do
-    user_id { "" }
-    onsen_id { "" }
+    association  :user
+    association  :onsen
   end
 end

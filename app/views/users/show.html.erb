@@ -23,7 +23,7 @@
         <div class="account-information-introduction">
           <%= @user.introduction %>
         </div>
-        <div class="account-information-link">
+        <div class="account-information-link" data-turbolinks="false">
           <%= link_to collection_user_path(@user), class: "link-to-collections" do %>
             <span><i class="fa fa-flag"></i> 行った温泉(<%= @collections.count %>件)</span>
           <% end %>

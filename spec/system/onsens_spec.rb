@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Onsens", type: :system do
   describe "ホーム画面の表示・リンクのテスト" do
-    let!(:onsen) { create(:onsen) }
+    let(:onsen) { create(:onsen) }
     let!(:onsen_2) { create(:onsen, :onsen_2) }
+    let!(:favorite) { create(:favorite, onsen_id: onsen.id) }
     before do
       visit onsens_path
     end
@@ -19,12 +20,18 @@ RSpec.describe "Onsens", type: :system do
     it "温泉が更新が新しい順に並んでいること" do 
       expect(page.text).to match %r{#{onsen_2.onsen_name}[\s\S]*#{onsen.onsen_name}}
     end
-    
+
     it "温泉名のクリックでページが遷移すること" do
       within ".onsen-list" do
         click_on onsen.onsen_name
       end
       expect(current_path).to eq onsen_path(onsen.id)
+    end
+
+    it "温泉表示を人気順に変更ができること" do
+      click_on "人気順"
+
+      expect(page.text).to match %r{#{onsen.onsen_name}[\s\S]*#{onsen_2.onsen_name}}
     end
   end
 
