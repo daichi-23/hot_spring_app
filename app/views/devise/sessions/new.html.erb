@@ -1,6 +1,6 @@
 <div class="user-form-container">
   <div class="form-container">
-<h2><%= t('.sign_in') %></h2>
+<h2 class="page-title"><%= t('.sign_in') %></h2>
 
 <%= form_with model: @user, url: user_session_path, local: true do |f| %>
   <div class="user-form-item">

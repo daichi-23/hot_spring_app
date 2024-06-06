@@ -64,7 +64,10 @@
             <p class="onsen-date">投稿日：<%= onsen.created_at.to_s(:datetime_jp) %></p>
             <p class="onsen-date">更新日：<%= onsen.updated_at.to_s(:datetime_jp) %></p>
           </div>
-          <%= render "shared/fav_btn", onsen: onsen %>
+          <div class="onsen-button-group">
+            <%= render "shared/fav_btn", onsen: onsen %>
+            <%= render "shared/collection_btn", onsen: onsen %>
+          </div>
         </div>
       </li>
     <% end %>

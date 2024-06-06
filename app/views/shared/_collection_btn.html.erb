@@ -1,0 +1,15 @@
+<% if current_user.present? %>
+  <% if onsen.collected_by?(current_user) %>
+    <%= link_to onsen_collections_path(onsen), method: :delete do %>
+      <i class="fa fa-flag"></i> 行った！
+    <% end %>
+  <% else %>
+    <%= link_to onsen_collections_path(onsen), method: :post do %>
+      <i class="fa fa-flag-o"></i> 行った！
+    <% end %>
+  <% end %>
+<% else %>
+  <%= link_to new_user_session_path do %>
+    <i class="fa fa-flag-o"></i> 行った！
+  <% end %>
+<% end %>

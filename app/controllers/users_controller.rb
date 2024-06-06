@@ -4,6 +4,14 @@ class UsersController < ApplicationController
     @onsen = @user.onsens.order("updated_at DESC")
     my_favorites = Favorite.where(user_id: @user.id).pluck(:onsen_id)
     @favorites = Onsen.find(my_favorites)
+    my_collections = Collection.where(user_id: @user.id).pluck(:onsen_id)
+    @collections = Onsen.find(my_collections)
+  end
+
+  def collection
+    @user = User.find(params[:id])
+    my_collections = Collection.where(user_id: @user.id).pluck(:onsen_id)
+    @onsens = Onsen.find(my_collections)
   end
 
   def edit

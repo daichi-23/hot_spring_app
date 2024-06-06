@@ -14,4 +14,8 @@ class Onsen < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
+
+  def collected_by?(user)
+    collections.exists?(user_id: user.id)
+  end
 end

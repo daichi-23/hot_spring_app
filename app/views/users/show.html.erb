@@ -1,6 +1,6 @@
 <div class="user-container">
   <div class="account-information-header">
-    <h2>プロフィール</h2>
+    <h2 class="page-title">プロフィール</h2>
     <% if current_user.present? %>
       <% if current_user==@user %>
         <div class="blue-link" data-turbolinks="false">
@@ -23,16 +23,21 @@
         <div class="account-information-introduction">
           <%= @user.introduction %>
         </div>
+        <div class="account-information-link">
+          <%= link_to collection_user_path(@user), class: "link-to-collections" do %>
+            <span><i class="fa fa-flag"></i> 行った温泉(<%= @collections.count %>件)</span>
+          <% end %>
+        </div>
       </div>
     </div>
-    <div class="favorited-onsen-list">
-      <h3 class="favorited-onsen-title">行きたい温泉リスト</h3>
-      <div class="favorited-onsen">
+    <div class="added-onsen-list">
+      <h3 class="added-onsen-title">行きたい温泉(<%= @favorites.count %>件)</h3>
+      <div class="added-onsen">
         <% @favorites.each do |onsen| %>
-          <div class="favorited-onsen-body" data-turbolinks="false">
-            <p class="onsen-name favolited-onsen-item"><%= link_to onsen.onsen_name, onsen_path(onsen) %></p>
-            <p class="favolited-onsen-item"><%= onsen.address %></p>
-            <p class="favolited-onsen-item"><%= onsen.onsen_introduction %></p>
+          <div class="added-onsen-body" data-turbolinks="false">
+            <p class="onsen-name added-onsen-item"><%= link_to onsen.onsen_name, onsen_path(onsen) %></p>
+            <p class="added-onsen-item"><%= onsen.address %></p>
+            <p class="added-onsen-item"><%= onsen.onsen_introduction %></p>
           </div>
         <% end %>
       </div>
@@ -40,8 +45,8 @@
   </div>
   <div class="user-post-container">
     <div class="user-post-title">
-      <h2>投稿</h2>
-      <p>（<%= @onsen.count %>件）</p>
+      <h2 class="page-title">投稿</h2>
+      <span>(<%= @onsen.count %>件)</span>
     </div>
     <div class="onsen-container">
       <ul class="onsen-list">
@@ -62,7 +67,10 @@
                 <p class="onsen-date">投稿日：<%= onsen.created_at.to_s(:datetime_jp) %></p>
                 <p class="onsen-date">更新日：<%= onsen.updated_at.to_s(:datetime_jp) %></p>
               </div>
-              <%= render "shared/fav_btn", onsen: onsen %>
+              <div class="onsen-button-group">
+                <%= render "shared/fav_btn", onsen: onsen %>
+                <%= render "shared/collection_btn", onsen: onsen %>
+              </div>
             </div>
           </li>
         <% end %>
