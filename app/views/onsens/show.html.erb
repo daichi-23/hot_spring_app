@@ -17,7 +17,7 @@
       <h4 class="posted-by-characters">投稿者 :</h4>
       <%= link_to user_path(@onsen.user), class: "posted-user" do %>
         <% if @onsen.user.image? %>
-          <%= image_tag @onsen.user.image.url, class: "posted-by-image" %>
+          <%= image_tag @onsen.user.image.to_s, class: "posted-by-image" %>
         <% else %>
           <%= image_tag 'icon/default-icon.png', class: "icon-image" %>
         <% end %>
@@ -27,7 +27,7 @@
     <div class="onsen-details">
       <div class="onsen-details-image-wrapper">
         <% if @onsen.onsen_image.present? %>
-          <%= image_tag @onsen.onsen_image.url, class: "onsen-details-image" %>
+          <%= image_tag @onsen.onsen_image.to_s, class: "onsen-details-image" %>
         <% else %>
           <%= image_tag 'icon/default-onsen.jpg', class: "onsen-details-image" %>
         <% end %>

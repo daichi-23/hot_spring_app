@@ -4,7 +4,7 @@
     <div class="account-information-wrapper">
       <div class="account-information">
         <% if @user.image? %>
-          <%= image_tag @user.image.url, class: "icon-image" %>
+          <%= image_tag @user.image.to_s, class: "icon-image" %>
         <% else %>
           <%= image_tag 'icon/default-icon.png', class: "icon-image" %>
         <% end %>  

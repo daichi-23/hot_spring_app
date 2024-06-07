@@ -45,7 +45,7 @@
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header-list-item" %>
                 <%= link_to user_path(current_user) do %>
                   <% if current_user.image? %>
-                    <%= image_tag current_user.image.url, class: "header-icon" %>
+                    <%= image_tag current_user.image.to_s, class: "header-icon" %>
                   <% else %>
                     <%= image_tag 'icon/default-icon.png', class: "header-icon" %>
                   <% end %>
@@ -55,7 +55,7 @@
               <div class="drop-down">
                 <button class="btn btn-outline-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <% if current_user.image? %>
-                    <%= image_tag current_user.image.url, class: "header-icon" %>
+                    <%= image_tag current_user.image.to_s, class: "header-icon" %>
                   <% else %>
                     <%= image_tag 'icon/default-icon.png', class: "header-icon" %>
                   <% end %>

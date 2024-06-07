@@ -51,7 +51,7 @@
       <li class="onsen">
         <div class="onsen-image-wrapper">
           <% if onsen.onsen_image.present? %>
-            <%= image_tag onsen.onsen_image.url, class: "onsen-image" %>
+            <%= image_tag onsen.onsen_image.to_s, class: "onsen-image" %>
           <% else %>
             <%= image_tag 'icon/default-onsen.jpg', class: "onsen-image" %>
           <% end %>

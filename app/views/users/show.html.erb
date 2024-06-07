@@ -13,7 +13,7 @@
     <div class="account-information-wrapper">
       <div class="account-information">
         <% if @user.image? %>
-          <%= image_tag @user.image.url, class: "icon-image" %>
+          <%= image_tag @user.image.to_s, class: "icon-image" %>
         <% else %>
           <%= image_tag 'icon/default-icon.png', class: "icon-image" %>
         <% end %>  
@@ -54,7 +54,7 @@
           <li class="onsen">
             <div class="onsen-image-wrapper">
               <% if onsen.onsen_image.present? %>
-                <%= image_tag onsen.onsen_image.url, class: "onsen-image" %>
+                <%= image_tag onsen.onsen_image.to_s, class: "onsen-image" %>
               <% else %>
                 <%= image_tag 'icon/default-onsen.jpg', class: "onsen-image" %>
               <% end %>
