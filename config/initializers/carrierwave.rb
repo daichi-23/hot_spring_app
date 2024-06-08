@@ -1,3 +1,7 @@
+require 'carrierwave/storage/abstract'
+require 'carrierwave/storage/file'
+require 'carrierwave/storage/fog'
+
 unless Rails.env.development? || Rails.env.test?
   CarrierWave.configure do |config|
     config.fog_provider = 'fog/aws'
@@ -10,5 +14,6 @@ unless Rails.env.development? || Rails.env.test?
 
     config.fog_directory = ENV['AWS_BUCKET']
     config.cache_storage = :fog
+    config.fog_public = false
   end
 end
