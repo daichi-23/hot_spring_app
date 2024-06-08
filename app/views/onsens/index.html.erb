@@ -54,9 +54,9 @@
       <li class="onsen">
         <div class="onsen-image-wrapper">
           <% if onsen.onsen_image.present? %>
-            <%= image_tag onsen.onsen_image.to_s, class: "onsen-image" %>
+            <%= image_tag onsen.onsen_image.to_s, class: "onsen-image", alt: "温泉画像" %>
           <% else %>
-            <%= image_tag 'icon/default-onsen.jpg', class: "onsen-image" %>
+            <%= image_tag 'icon/default-onsen.jpg', class: "onsen-image", alt: "温泉画像" %>
           <% end %>
         </div>
         <div class="onsen-body" data-turbolinks="false">

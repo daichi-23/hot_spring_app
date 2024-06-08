@@ -26,7 +26,7 @@
               </div>
               <div class="drop-down">
                 <button class="btn btn-outline-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <%= image_tag 'icon/default-icon.png', class: "header-icon" %>
+                  <%= image_tag 'icon/default-icon.png', class: "header-icon", alt: "ログイン" %>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-turbolinks="false">
                   <%= link_to "ホーム", "/", class: "dropdown-item" %>
@@ -45,9 +45,9 @@
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header-list-item" %>
                 <%= link_to user_path(current_user) do %>
                   <% if current_user.image? %>
-                    <%= image_tag current_user.image.to_s, class: "header-icon" %>
+                    <%= image_tag current_user.image.to_s, class: "header-icon", alt: "アカウント" %>
                   <% else %>
-                    <%= image_tag 'icon/default-icon.png', class: "header-icon" %>
+                    <%= image_tag 'icon/default-icon.png', class: "header-icon", alt: "アカウント" %>
                   <% end %>
                 <% end %>
               </div>
@@ -55,9 +55,9 @@
               <div class="drop-down">
                 <button class="btn btn-outline-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <% if current_user.image? %>
-                    <%= image_tag current_user.image.to_s, class: "header-icon" %>
+                    <%= image_tag current_user.image.to_s, class: "header-icon", alt: "メニュー" %>
                   <% else %>
-                    <%= image_tag 'icon/default-icon.png', class: "header-icon" %>
+                    <%= image_tag 'icon/default-icon.png', class: "header-icon", alt: "メニュー" %>
                   <% end %>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-turbolinks="false">

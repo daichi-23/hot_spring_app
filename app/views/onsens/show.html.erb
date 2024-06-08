@@ -13,13 +13,13 @@
     </div>
   </div>
   <div class="onsen-details-wrapper">
-    <div class="posted-by">
+    <div class="posted-by" data-turbolinks="false">
       <h4 class="posted-by-characters">投稿者 :</h4>
       <%= link_to user_path(@onsen.user), class: "posted-user" do %>
         <% if @onsen.user.image? %>
-          <%= image_tag @onsen.user.image.to_s, class: "posted-by-image" %>
+          <%= image_tag @onsen.user.image.to_s, class: "posted-by-image", alt: "アイコン画像" %>
         <% else %>
-          <%= image_tag 'icon/default-icon.png', class: "icon-image" %>
+          <%= image_tag 'icon/default-icon.png', class: "icon-image", alt: "アイコン画像" %>
         <% end %>
         <h4 class="posted-by-characters blue-link"><%= @onsen.user.name %></h4>
       <% end %>
@@ -27,9 +27,9 @@
     <div class="onsen-details">
       <div class="onsen-details-image-wrapper">
         <% if @onsen.onsen_image.present? %>
-          <%= image_tag @onsen.onsen_image.to_s, class: "onsen-details-image" %>
+          <%= image_tag @onsen.onsen_image.to_s, class: "onsen-details-image", alt: "温泉画像" %>
         <% else %>
-          <%= image_tag 'icon/default-onsen.jpg', class: "onsen-details-image" %>
+          <%= image_tag 'icon/default-onsen.jpg', class: "onsen-details-image", alt: "温泉画像" %>
         <% end %>
       </div>
       <div class="onsen-details-body" data-turbolinks="false">

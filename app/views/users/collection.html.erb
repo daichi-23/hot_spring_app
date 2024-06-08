@@ -4,9 +4,9 @@
     <div class="account-information-wrapper">
       <div class="account-information">
         <% if @user.image? %>
-          <%= image_tag @user.image.to_s, class: "icon-image" %>
+          <%= image_tag @user.image.to_s, class: "icon-image", alt: "アイコン画像" %>
         <% else %>
-          <%= image_tag 'icon/default-icon.png', class: "icon-image" %>
+          <%= image_tag 'icon/default-icon.png', class: "icon-image", alt: "アイコン画像" %>
         <% end %>  
         <h3 class="account-information-name">
           <%= @user.name %>
