@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Favorites", type: :system do
+RSpec.describe "Collections", type: :system do
 
-  describe "行きたい温泉リスト" do
+  describe "行った温泉リスト" do
     let(:user) { create(:user) }
     let!(:onsen) { create(:onsen) }
 
@@ -13,14 +13,14 @@ RSpec.describe "Favorites", type: :system do
 
       within ".onsen-body" do
         expect{
-          find('i.fav-btn').click
-        }.to change { Favorite.count }.by(1)
+          find('i.collection-btn').click
+        }.to change { Collection.count }.by(1)
       end
 
       within ".onsen-body" do
         expect{
-          find('i.fav-btn').click
-        }.to change { Favorite.count }.by(-1)
+          find('i.collection-btn').click
+        }.to change { Collection.count }.by(-1)
       end
     end
 
@@ -28,7 +28,7 @@ RSpec.describe "Favorites", type: :system do
       visit onsens_path
 
       within ".onsen-body" do
-        find('i.fav-btn').click
+        find('i.collection-btn').click
       end
 
       expect(current_path).to eq new_user_session_path

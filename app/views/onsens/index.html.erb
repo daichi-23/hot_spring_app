@@ -54,9 +54,9 @@
       <li class="onsen">
         <div class="onsen-image-wrapper">
           <% if onsen.onsen_image.present? %>
-            <%= image_tag onsen.onsen_image.url, class: "onsen-image" %>
+            <%= image_tag onsen.onsen_image.to_s, class: "onsen-image", alt: "温泉画像" %>
           <% else %>
-            <%= image_tag 'icon/default-onsen.jpg', class: "onsen-image" %>
+            <%= image_tag 'icon/default-onsen.jpg', class: "onsen-image", alt: "温泉画像" %>
           <% end %>
         </div>
         <div class="onsen-body" data-turbolinks="false">
@@ -67,7 +67,10 @@
             <p class="onsen-date">投稿日：<%= onsen.created_at.to_s(:datetime_jp) %></p>
             <p class="onsen-date">更新日：<%= onsen.updated_at.to_s(:datetime_jp) %></p>
           </div>
-          <%= render "shared/fav_btn", onsen: onsen %>
+          <div class="onsen-button-group">
+            <%= render "shared/fav_btn", onsen: onsen %>
+            <%= render "shared/collection_btn", onsen: onsen %>
+          </div>
         </div>
       </li>
     <% end %>

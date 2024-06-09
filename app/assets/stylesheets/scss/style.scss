@@ -38,6 +38,10 @@ label {
   color: rgb(198, 0, 0)
 }
 
+.page-title {
+  font-size: 24px;
+}
+
 .flat-navi {
   display: flex;
   justify-content: space-between;
@@ -80,6 +84,7 @@ label {
   padding: 10px 0 20px;
   background-color: rgb(217, 243, 234);
   margin-bottom: 5px;
+  border-radius: 10px;
 }
 
 .icon-image {
@@ -99,16 +104,31 @@ label {
   text-align: start;
 }
 
-.favorited-onsen-title {
-  margin: 10px;
+.account-information-link {
+  margin: 10px auto 0;
+  width: fit-content;
 }
 
-.favorited-onsen-body {
+.link-to-collections {
+  border-bottom: 1px solid;
+}
+
+.link-to-collections:hover {
+  text-decoration: none;
+  color: rgb(107, 107, 107);
+}
+
+.added-onsen-title {
+  margin: 10px;
+  font-size: 24px;
+}
+
+.added-onsen-body {
   padding: 10px 20px;
   border-top: 1px dotted;
 }
 
-.favolited-onsen-item {
+.added-onsen-item {
   margin-bottom: 4px;
 }
 
@@ -216,6 +236,12 @@ label {
   font-size: 20px;
 }
 
+.onsen-button-group {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+}
+
 .onsen-search-header {
   justify-content: space-between;
   align-items: center;
@@ -225,7 +251,13 @@ label {
 .onsen-details-header {
   justify-content: space-between;
   align-items: center;
-  margin: 0 20px 20px;
+  margin: 0 20px;
+}
+
+.onsen-details-wrapper {
+  padding: 10px;
+  background-color: rgb(217, 243, 234);
+  border-radius: 10px;
 }
 
 .posted-by {
@@ -234,7 +266,15 @@ label {
   gap: 5px;
   grid-gap: 5px;
   width: fit-content;
-  margin: 0 10px 10px 0;
+  padding: 10px;
+}
+
+.posted-user {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  grid-gap: 5px;
+  width: fit-content;
 }
 
 .posted-by-image {
@@ -243,9 +283,9 @@ label {
   border-radius: 60px;
 }
 
-.posted-by-name {
+.posted-by-characters {
   margin: 5px 0;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .onsen-details-image {
@@ -255,6 +295,11 @@ label {
 
 .onsen-date {
   margin-bottom: 5px;
+}
+
+.onsen-form-title {
+  margin: 0 20px;
+  font-size: 24px;
 }
 
 .onsen-form-item {

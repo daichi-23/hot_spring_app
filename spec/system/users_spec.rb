@@ -19,7 +19,7 @@ RSpec.describe "Users", type: :system do
         fill_in "user[email]", with: @user.email
         fill_in "user[password]", with: @user.password
         fill_in "user[password_confirmation]", with: @user.password_confirmation
-        
+
         expect{
           find('input[name="commit"]').click
         }.to change { User.count }.by(1)
@@ -105,8 +105,9 @@ RSpec.describe "Users", type: :system do
 
   describe "ユーザー詳細画面の表示・リンクのテスト" do
     let(:user) { create(:user) }
-    let!(:onsen) { create(:onsen, user: user) }
+    let(:onsen) { create(:onsen, user: user) }
     let!(:onsen_2) { create(:onsen, :onsen_2, user: user) }
+    let!(:favorite) { create(:favorite, user_id: user.id, onsen_id: onsen.id) }
     before do
       sign_in user
       visit user_path(user.id)
@@ -126,7 +127,32 @@ RSpec.describe "Users", type: :system do
       expect(current_path).to eq edit_user_path(user.id)
     end
 
-    it "温泉情報が表示されていること" do
+    it "行った温泉ページへのリンクが表示されていること" do
+      expect(page).to have_content "行った温泉"
+    end
+
+    it "行った温泉リンクのクリックでページが遷移すること" do
+      click_on "行った温泉"
+      expect(current_path).to eq collection_user_path(user.id)
+    end
+
+    it "追加された温泉が行きたい温泉リストに表示されていること" do
+      within ".added-onsen-list" do
+        expect(page).to have_content onsen.onsen_name
+        expect(page).to have_content onsen.address
+        expect(page).to have_content onsen.onsen_introduction
+      end
+    end
+
+    it "追加されてない温泉が行きたい温泉情報に表示されていないこと" do
+      within ".added-onsen-list" do
+        expect(page).not_to have_content onsen_2.onsen_name
+        expect(page).not_to have_content onsen_2.address
+        expect(page).not_to have_content onsen_2.onsen_introduction
+      end
+    end
+
+    it "投稿した温泉情報が表示されていること" do
       within ".onsen-list" do
         expect(page).to have_content onsen.onsen_name
         expect(page).to have_content onsen.address
@@ -134,15 +160,43 @@ RSpec.describe "Users", type: :system do
       end
     end
 
-    it "温泉が更新が新しい順に並んでいること" do 
-      expect(page.text).to match %r{#{onsen_2.onsen_name}[\s\S]*#{onsen.onsen_name}}
+    it "温泉が更新が新しい順に並んでいること" do
+      within ".onsen-list" do
+        expect(page.text).to match %r{#{onsen_2.onsen_name}[\s\S]*#{onsen.onsen_name}}
+      end
     end
-    
+
     it "温泉名のクリックでページが遷移すること" do
       within ".onsen-list" do
         click_on onsen.onsen_name
       end
       expect(current_path).to eq onsen_path(onsen.id)
+    end
+  end
+
+  describe "行った温泉ページの画面の表示・リンクのテスト" do
+    let(:user) { create(:user) }
+    let(:onsen) { create(:onsen, user: user) }
+    let!(:onsen_2) { create(:onsen, :onsen_2, user: user) }
+    let!(:collection) { create(:collection, user_id: user.id, onsen_id: onsen.id) }
+    before do
+      visit collection_user_path(user.id)
+    end
+
+    it "追加された温泉が行きたい温泉リストに表示されていること" do
+      within ".added-onsen-list" do
+        expect(page).to have_content onsen.onsen_name
+        expect(page).to have_content onsen.address
+        expect(page).to have_content onsen.onsen_introduction
+      end
+    end
+
+    it "追加されてない温泉が行きたい温泉情報に表示されていないこと" do
+      within ".added-onsen-list" do
+        expect(page).not_to have_content onsen_2.onsen_name
+        expect(page).not_to have_content onsen_2.address
+        expect(page).not_to have_content onsen_2.onsen_introduction
+      end
     end
   end
 end

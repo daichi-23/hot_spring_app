@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources:users, only: [:show, :edit, :update] do
     member do
       get :favorites
+      get :collection
     end
   end
 
@@ -21,5 +22,6 @@ Rails.application.routes.draw do
       get 'search'
     end
     resource:favorites, only: [:create, :destroy]
+    resource:collections, only: [:create, :destroy]
   end
 end

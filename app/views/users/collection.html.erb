@@ -1,0 +1,72 @@
+<h6 data-turbolinks="false"><%= link_to "←プロフィールに戻る", user_path(@user) %></h6>
+<div class="user-account-container">
+  <div class="flex-to-block">
+    <div class="account-information-wrapper">
+      <div class="account-information">
+        <% if @user.image? %>
+          <%= image_tag @user.image.to_s, class: "icon-image", alt: "アイコン画像" %>
+        <% else %>
+          <%= image_tag 'icon/default-icon.png', class: "icon-image", alt: "アイコン画像" %>
+        <% end %>  
+        <h3 class="account-information-name">
+          <%= @user.name %>
+        </h3>
+        <div class="account-information-introduction">
+          <%= @user.introduction %>
+        </div>
+      </div>
+    </div>
+    <div class="added-onsen-list">
+      <h3 class="added-onsen-title">行った温泉(<%= @onsens.count %>件)</h3>
+      <div class="added-onsen">
+        <% @onsens.each do |onsen| %>
+          <div class="added-onsen-body" data-turbolinks="false">
+            <p class="onsen-name added-onsen-item"><%= link_to onsen.onsen_name, onsen_path(onsen) %></p>
+            <p class="added-onsen-item"><%= onsen.address %></p>
+            <p class="added-onsen-item"><%= onsen.onsen_introduction %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="map-container">
+    <div id='map'></div>
+    <script>
+      function initMap() {
+        let latlng = new google.maps.LatLng(38.60, 139.5);      
+        let styles = [
+             {
+              stylers: [
+               { "saturation": 0 },
+              { "lightness": 0 }
+             ]
+             }
+            ];
+        let map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 5.5,
+            styles: styles,
+            center: latlng
+        });
+        let transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+        <% @onsens.each do |onsen|%>
+          ( function() { 
+            let markerLatLng = { lat: <%= onsen.latitude %>, lng: <%= onsen.longitude %> }; 
+            let marker = new google.maps.Marker({ 
+              position: markerLatLng, 
+              map: map 
+            });
+            let infowindow = new google.maps.InfoWindow({
+              position: markerLatLng,
+              content: "<a href='<%= onsen_url(onsen.id) %>' target='_blank'><%= onsen.onsen_name %></a>"
+            }); 
+            marker.addListener('click', function() {
+              infowindow.open(map, marker);
+            });
+          })();
+        <% end %>
+      }
+    </script>
+   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
+  </div>
+</div>
