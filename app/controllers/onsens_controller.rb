@@ -24,6 +24,7 @@ class OnsensController < ApplicationController
 
   def show
     @onsen = Onsen.find(params[:id])
+    @collections = @onsen.collections
   end
 
   def edit

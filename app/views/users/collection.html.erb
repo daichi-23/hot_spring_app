@@ -24,6 +24,9 @@
             <p class="onsen-name added-onsen-item"><%= link_to onsen.onsen_name, onsen_path(onsen) %></p>
             <p class="added-onsen-item"><%= onsen.address %></p>
             <p class="added-onsen-item"><%= onsen.onsen_introduction %></p>
+            <% if current_user.id==@user.id %>
+              <%= link_to "コメントを編集する", edit_onsen_collection_path(onsen) %>
+            <% end %>
           </div>
         <% end %>
       </div>

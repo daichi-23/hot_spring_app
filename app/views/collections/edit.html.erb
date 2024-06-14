@@ -1,0 +1,8 @@
+
+<%= form_with model: [@onsen, @collection] do |f| %>
+  <%= f.label :comment, "感想" %>
+  <%= f.text_area :comment, placeholder: "感想を入力" %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :onsen_id, value: @onsen.id %>
+  <%= f.submit "更新", class: "" %>
+<% end %>

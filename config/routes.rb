@@ -22,6 +22,6 @@ Rails.application.routes.draw do
       get 'search'
     end
     resource:favorites, only: [:create, :destroy]
-    resource:collections, only: [:create, :destroy]
+    resources:collections, only: [:create, :edit, :update, :destroy]
   end
 end
