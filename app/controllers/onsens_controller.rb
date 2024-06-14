@@ -1,4 +1,6 @@
 class OnsensController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :search]
+
   def index
     if params[:sort_fav]
       @onsens = Onsen.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}

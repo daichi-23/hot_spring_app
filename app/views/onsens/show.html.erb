@@ -4,11 +4,9 @@
       <h2 class="page-title">温泉詳細</h2>
     </div>
     <div class="flat-navi">
-      <% if current_user.present? %>
-        <% if current_user.id==@onsen.user_id %>
-          <%= link_to "編集する", edit_onsen_path(@onsen), class: "blue-link" %>
-          <%= link_to "温泉を削除", @onsen, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "red-link" %>
-        <% end %>
+      <% if current_user.id==@onsen.user_id %>
+        <%= link_to "編集する", edit_onsen_path(@onsen), class: "blue-link" %>
+        <%= link_to "温泉を削除", @onsen, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "red-link" %>
       <% end %>
     </div>
   </div>
@@ -67,8 +65,10 @@
     </div>
     <div>
       <% @collections.each do |collection| %>
-        <p><%= collection.user.name %></p>
-        <p><%= collection.comment %></p>
+        <% if collection.comment? %>
+          <p><%= collection.user.name %></p>
+          <p><%= collection.comment %></p>
+        <% end %>
       <% end %>
     </div>
   </div>
