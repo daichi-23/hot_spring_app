@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @favorites = Onsen.find(my_favorites)
     my_collections = Collection.where(user_id: @user.id).pluck(:onsen_id)
     @collections = Onsen.find(my_collections)
+    @collection = Collection.find_by(onsen_id: @onsen.ids)
   end
 
   def collection

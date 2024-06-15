@@ -7,6 +7,7 @@ class OnsensController < ApplicationController
     else
       @onsens = Onsen.order("updated_at DESC")
     end
+    @collection = Collection.find_by(onsen_id: @onsens.ids)
   end
 
   def new
@@ -61,6 +62,7 @@ class OnsensController < ApplicationController
     else
       @onsens = Onsen.all.order("updated_at DESC")
     end
+    @collection = Collection.find_by(onsen_id: @onsens.ids)
   end
 
   private

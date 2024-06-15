@@ -118,6 +118,16 @@ label {
   color: rgb(107, 107, 107);
 }
 
+.link-to-comment {
+  border-bottom: 1px solid;
+  font-size: 14px;
+}
+
+.link-to-comment:hover {
+  text-decoration: none;
+  color: rgb(107, 107, 107);
+}
+
 .added-onsen-title {
   margin: 10px;
   font-size: 24px;
@@ -129,7 +139,7 @@ label {
 }
 
 .added-onsen-item {
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .blue-button {
@@ -321,7 +331,7 @@ label {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .user-form-item {
@@ -330,6 +340,16 @@ label {
 }
 
 .user-form-input {
+  width: 100%;
+  padding: 5px;
+}
+
+.comment-form-item {
+  width: 100%;
+  padding: 7px;
+}
+
+.comment-form-input {
   width: 100%;
   padding: 5px;
 }

@@ -190,3 +190,17 @@
     width: 100%;
   }
 }
+
+.comment-form-container {
+  width: 80%;
+  margin: auto;
+
+  @include sm-device {
+    width: 90%;
+    margin: auto;
+  }
+
+  @include xs-device-or-less {
+    width: 100%;
+  }
+}
