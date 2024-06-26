@@ -142,6 +142,42 @@ label {
   margin-bottom: 6px;
 }
 
+.comment-title {
+  font-size: 22px;
+  margin-bottom: 0;
+}
+
+.comment-list {
+  margin: 5px;
+  max-height: 400px;
+  overflow-y: scroll;
+  background-color: white;
+}
+
+.comment {
+  display: flex;
+  grid-gap: 5px;
+  gap:5px; 
+  align-items: start;
+  font-size: 14px;
+  padding: 10px 5px;
+  border-top: 1px dotted;
+}
+
+.comment-image {
+  max-width: 36px;
+  max-height: 36px;
+  border-radius: 60px;
+}
+
+.comment-name-and-date {
+  margin-bottom: 3px;
+}
+
+.comment-date {
+  font-size: 12px;
+}
+
 .blue-button {
   display: flex;
   align-items: center;

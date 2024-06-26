@@ -63,13 +63,35 @@
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
     </div>
-    <div>
-      <% @collections.each do |collection| %>
-        <% if collection.comment? %>
-          <p><%= collection.user.name %></p>
-          <p><%= collection.comment %></p>
+    <div class="comment-container" data-turbolinks="false">
+      <div class="comment-header">
+        <h3 class="comment-title">温泉の感想(<%= @collections.count(:comment) %>件)</h3>
+        <% if @onsen.collected_by?(current_user) %>
+          <%= link_to "感想を投稿・編集", edit_onsen_collection_path(@onsen), class: "link-to-comment" %>
         <% end %>
-      <% end %>
+      </div>
+      <div class="comment-list">
+        <% @collections.each do |collection| %>
+          <% if collection.comment? %>
+            <div class="comment">
+              <%= link_to user_path(collection.user) do %>
+                <% if collection.user.image? %>
+                  <%= image_tag collection.user.image.to_s, class: "comment-image", alt: "アイコン画像" %>
+                <% else %>
+                  <%= image_tag 'icon/default-icon.png', class: "comment-image", alt: "アイコン画像" %>
+                <% end %>
+              <% end %>
+              <div>
+                <div class="comment-name-and-date">
+                  <%= link_to collection.user.name, user_path(collection.user), class: "blue-link" %>
+                  <span class="comment-date"><%= time_ago_in_words(collection.updated_at) %>前</span>
+                </div>
+                <%= collection.comment %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

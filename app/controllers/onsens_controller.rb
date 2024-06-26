@@ -27,7 +27,7 @@ class OnsensController < ApplicationController
 
   def show
     @onsen = Onsen.find(params[:id])
-    @collections = @onsen.collections
+    @collections = @onsen.collections.order("updated_at DESC")
   end
 
   def edit

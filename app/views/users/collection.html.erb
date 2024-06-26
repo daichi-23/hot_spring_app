@@ -25,7 +25,7 @@
             <p class="added-onsen-item"><%= onsen.address %></p>
             <p class="added-onsen-item"><%= onsen.onsen_introduction %></p>
             <% if current_user.id==@user.id %>
-              <%= link_to "コメントを編集する", edit_onsen_collection_path(onsen), class: "link-to-comment" %>
+              <%= link_to "感想を投稿・編集", edit_onsen_collection_path(onsen), class: "link-to-comment" %>
             <% end %>
           </div>
         <% end %>
