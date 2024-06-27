@@ -31,7 +31,7 @@
         <% end %>
       </div>
       <div class="onsen-details-body" data-turbolinks="false">
-        <p class="onsen-name"><%= link_to @onsen.onsen_name, onsen_path(@onsen) %></p>
+        <p class="onsen-details-name"><%= @onsen.onsen_name %></p>
         <p class="onsen-address"><%= @onsen.address %></p>
         <p class="onsen-introduction"><%= @onsen.onsen_introduction %></p>
         <div class="onsen-date-group">
