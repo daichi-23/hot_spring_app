@@ -3,11 +3,13 @@ class OnsensController < ApplicationController
 
   def index
     if params[:sort_fav]
-      @onsens = Onsen.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+      @onsen = Onsen.includes(:favorited_users)
+      @onsens = @onsen.sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+      @collection = Collection.find_by(onsen_id: @onsen.ids)
     else
       @onsens = Onsen.order("updated_at DESC")
+      @collection = Collection.find_by(onsen_id: @onsens.ids)
     end
-    @collection = Collection.find_by(onsen_id: @onsens.ids)
   end
 
   def new
