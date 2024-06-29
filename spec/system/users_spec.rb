@@ -180,10 +180,11 @@ RSpec.describe "Users", type: :system do
     let!(:onsen_2) { create(:onsen, :onsen_2, user: user) }
     let!(:collection) { create(:collection, user_id: user.id, onsen_id: onsen.id) }
     before do
+      sign_in user
       visit collection_user_path(user.id)
     end
 
-    it "追加された温泉が行きたい温泉リストに表示されていること" do
+    it "追加された温泉が行った温泉リストに表示されていること" do
       within ".added-onsen-list" do
         expect(page).to have_content onsen.onsen_name
         expect(page).to have_content onsen.address
@@ -191,7 +192,27 @@ RSpec.describe "Users", type: :system do
       end
     end
 
-    it "追加されてない温泉が行きたい温泉情報に表示されていないこと" do
+    it "温泉名のクリックでページが遷移すること" do
+      within ".added-onsen-list" do
+        click_on onsen.onsen_name
+      end
+      expect(current_path).to eq onsen_path(onsen.id)
+    end
+
+    it "行った温泉のコメント投稿ページへのリンクが表示されていること" do
+      within ".added-onsen-list" do
+        expect(page).to have_content "感想を投稿・編集"
+      end
+    end
+
+    it "コメント投稿ページへのリンクをクリックで、コメント投稿ページへ遷移すること" do
+      within ".added-onsen-list" do
+        click_on "感想を投稿・編集"
+        expect(current_path).to eq edit_onsen_collection_path(onsen.id, collection.id)
+      end
+    end
+
+    it "追加されてない温泉が行った温泉情報に表示されていないこと" do
       within ".added-onsen-list" do
         expect(page).not_to have_content onsen_2.onsen_name
         expect(page).not_to have_content onsen_2.address
