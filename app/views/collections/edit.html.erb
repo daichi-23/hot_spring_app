@@ -1,0 +1,16 @@
+<div class="comment-form-container">
+  <div class="form-container">
+    <h2 class="page-title">温泉の感想</h2>
+    <%= form_with model: [@onsen, @collection] do |f| %>
+      <div class="comment-form-item">
+        <%= f.text_area :comment, placeholder: "感想を入力", class: "comment-form-input" %>
+      </div>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :onsen_id, value: @onsen.id %>
+      <div class="comment-form-item" data-turbolinks="false">
+        <%= f.submit "更新", class: "form-link blue-button" %>
+        <%= link_to "キャンセル", :back, class: "form-link" %>
+      </div>
+    <% end %>
+  </div>
+</div>

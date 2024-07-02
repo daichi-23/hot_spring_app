@@ -26,6 +26,12 @@ RSpec.describe Collection, type: :model do
         @collection.valid?
         expect(@collection.errors.full_messages).to include "Onsenを入力してください"
       end
+
+      it "commentが300文字より多いと登録できないこと" do
+        @collection.comment = "x" * 301
+        @collection.valid?
+        expect(@collection.errors.full_messages).to include("感想は300文字以内で入力してください")
+      end
     end
   end
 end

@@ -1,12 +1,10 @@
 <div class="user-container">
   <div class="account-information-header">
     <h2 class="page-title">プロフィール</h2>
-    <% if current_user.present? %>
-      <% if current_user==@user %>
-        <div class="blue-link" data-turbolinks="false">
-          <%= link_to "編集", edit_user_path(@user) %>
-        </div>
-      <% end %>
+    <% if current_user==@user %>
+      <div class="blue-link" data-turbolinks="false">
+        <%= link_to "編集", edit_user_path(@user) %>
+      </div>
     <% end %>
   </div>
   <div class="user-account-container flex-to-block">
@@ -69,7 +67,7 @@
               </div>
               <div class="onsen-button-group">
                 <%= render "shared/fav_btn", onsen: onsen %>
-                <%= render "shared/collection_btn", onsen: onsen %>
+                <%= render "shared/collection_btn", onsen: onsen, collection: @collection %>
               </div>
             </div>
           </li>

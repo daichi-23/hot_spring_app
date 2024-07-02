@@ -98,6 +98,10 @@
   @include xs-device-or-less {
     height: 400px;
   }
+
+  @include xxs-device {
+    height: 350px;
+  }
 }
 
 .onsen-details-container {
@@ -154,6 +158,18 @@
   }
 }
 
+.comment-header {
+  display: flex;
+  gap: 10px;
+  align-items: end;
+  margin: 20px 10px 4px;
+
+  @include xxs-device {
+    display: block;
+    margin: 10px 10px 4px;
+  }
+}
+
 .onsen-form-container {
   width: 80%;
   margin: auto;
@@ -178,6 +194,20 @@
 }
 
 .user-form-container {
+  width: 80%;
+  margin: auto;
+
+  @include sm-device {
+    width: 90%;
+    margin: auto;
+  }
+
+  @include xs-device-or-less {
+    width: 100%;
+  }
+}
+
+.comment-form-container {
   width: 80%;
   margin: auto;
 

@@ -1,6 +1,6 @@
 <% if current_user.present? %>
   <% if onsen.collected_by?(current_user) %>
-    <%= link_to onsen_collection_path(onsen.id, collection.id), method: :delete do %>
+    <%= link_to onsen_collection_path(onsen.id, collection.ids), method: :delete do %>
       <i class="fa fa-flag collection-btn"></i>
       <span> 行った！</span>
     <% end %>

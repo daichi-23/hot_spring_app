@@ -1,9 +1,14 @@
 class OnsensController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :search]
+
   def index
     if params[:sort_fav]
-      @onsens = Onsen.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+      @onsen = Onsen.includes(:favorited_users)
+      @onsens = @onsen.sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+      @collection = Collection.find_by(onsen_id: @onsen.ids)
     else
       @onsens = Onsen.order("updated_at DESC")
+      @collection = Collection.find_by(onsen_id: @onsens.ids)
     end
   end
 
@@ -24,6 +29,7 @@ class OnsensController < ApplicationController
 
   def show
     @onsen = Onsen.find(params[:id])
+    @collections = @onsen.collections.order("updated_at DESC")
   end
 
   def edit
@@ -58,6 +64,7 @@ class OnsensController < ApplicationController
     else
       @onsens = Onsen.all.order("updated_at DESC")
     end
+    @collection = Collection.find_by(onsen_id: @onsens.ids)
   end
 
   private

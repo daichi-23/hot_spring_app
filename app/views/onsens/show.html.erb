@@ -4,11 +4,9 @@
       <h2 class="page-title">温泉詳細</h2>
     </div>
     <div class="flat-navi">
-      <% if current_user.present? %>
-        <% if current_user.id==@onsen.user_id %>
-          <%= link_to "編集する", edit_onsen_path(@onsen), class: "blue-link" %>
-          <%= link_to "温泉を削除", @onsen, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "red-link" %>
-        <% end %>
+      <% if current_user.id==@onsen.user_id %>
+        <%= link_to "編集する", edit_onsen_path(@onsen), class: "blue-link" %>
+        <%= link_to "温泉を削除", @onsen, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "red-link" %>
       <% end %>
     </div>
   </div>
@@ -33,7 +31,7 @@
         <% end %>
       </div>
       <div class="onsen-details-body" data-turbolinks="false">
-        <p class="onsen-name"><%= link_to @onsen.onsen_name, onsen_path(@onsen) %></p>
+        <p class="onsen-details-name"><%= @onsen.onsen_name %></p>
         <p class="onsen-address"><%= @onsen.address %></p>
         <p class="onsen-introduction"><%= @onsen.onsen_introduction %></p>
         <div class="onsen-date-group">
@@ -42,7 +40,7 @@
         </div>
         <div class="onsen-button-group">
           <%= render "shared/fav_btn", onsen: @onsen %>
-          <%= render "shared/collection_btn", onsen: @onsen %>
+          <%= render "shared/details_collection_btn", onsen: @onsen, collection: @collections %>
         </div>
       </div>
     </div>
@@ -64,6 +62,36 @@
       }
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
+    </div>
+    <div class="comment-container" data-turbolinks="false">
+      <div class="comment-header">
+        <h3 class="comment-title">温泉の感想(<%= @collections.count(:comment) %>件)</h3>
+        <% if @onsen.collected_by?(current_user) %>
+          <%= link_to "感想を投稿・編集", edit_onsen_collection_path(@onsen), class: "link-to-comment" %>
+        <% end %>
+      </div>
+      <div class="comment-list">
+        <% @collections.each do |collection| %>
+          <% if collection.comment? %>
+            <div class="comment">
+              <%= link_to user_path(collection.user) do %>
+                <% if collection.user.image? %>
+                  <%= image_tag collection.user.image.to_s, class: "comment-image", alt: "アイコン画像" %>
+                <% else %>
+                  <%= image_tag 'icon/default-icon.png', class: "comment-image", alt: "アイコン画像" %>
+                <% end %>
+              <% end %>
+              <div>
+                <div class="comment-name-and-date">
+                  <%= link_to collection.user.name, user_path(collection.user), class: "blue-link" %>
+                  <span class="comment-date"><%= time_ago_in_words(collection.updated_at) %>前</span>
+                </div>
+                <%= collection.comment %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
